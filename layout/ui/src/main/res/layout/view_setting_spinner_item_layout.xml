@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:padding="@dimen/card_padding_width"
+    tools:parentTag="android.widget.RelativeLayout">
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:textColor="@color/master_textColorPrimary"
+        android:textSize="@dimen/text_normal_size"
+        tools:text="@string/empty" />
+
+    <com.timecat.layout.ui.standard.materialspinner.BlockMaterialSpinner
+        android:id="@+id/ms"
+        style="@style/Block.Material.SpinnerStyle"
+        android:layout_height="32dp"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="@dimen/card_padding_width"
+        android:layout_toEndOf="@id/title"
+        android:gravity="center"
+        android:minWidth="80dp"
+        android:textSize="@dimen/text_normal_size"
+        app:ms_dropdown_height="24dp"
+        tools:ms_entries="@array/languages" />
+</merge>

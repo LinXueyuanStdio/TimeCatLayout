@@ -1,0 +1,48 @@
+apply from: "${project.rootDir}/gradle/library_header.gradle"
+
+
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+
+android {
+    resourcePrefix "view_" //给 Module 内的资源名增加前缀, 避免资源名冲突
+    buildFeatures {
+        viewBinding true
+    }
+
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_1_8.toString()
+    }
+}
+
+dependencies {
+    api rootProject.ext.timecat["component-CommonResource"]
+    api rootProject.ext.timecat["component-CommonData"]
+    api rootProject.ext.timecat["component-CommonSDK"]
+    api rootProject.ext.timecat["component-PackRefreshList"]
+
+    api rootProject.ext.androidx_lib["core-ktx"]
+    api rootProject.ext.androidx_lib["cardview"]
+    api rootProject.ext.androidx_lib["constraint-layout"]
+    api rootProject.ext.androidx_lib["support-dynamic-animation"]
+
+    api rootProject.ext.dependencies["paginate"]
+    api rootProject.ext.dependencies["lottie"]
+    api rootProject.ext.dependencies["circleimageview"]
+    api rootProject.ext.dependencies["BaseRecyclerViewAdapterHelper"]
+
+    api 'com.afollestad:vvalidator:0.5.2'
+    api 'eu.davidea:flipview:1.2.0'
+    api rootProject.ext.dependencies["countdownview"]
+
+    api 'com.haibin:calendarview:3.2.7'
+
+    api 'com.github.chenBingX:SuperTextView:v3.2.5'
+    api 'com.github.zagum:Android-ExpandIcon:1.2.1'
+    api 'com.github.githubwing:ByeBurger:1.2.3'
+
+    api rootProject.ext.dependencies["viewtooltip"]
+}
+
+apply from: "${project.rootDir}/gradle/library_tail.gradle"

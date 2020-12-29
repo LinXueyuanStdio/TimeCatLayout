@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/HintTextViewRelativeLayoutSelector"
+    tools:parentTag="android.widget.RelativeLayout">
+
+    <com.timecat.layout.ui.standard.textview.HintTextView
+        android:id="@+id/htv"
+        style="@style/HintTextViewInLayoutLeft"
+        android:layout_centerVertical="true"
+        android:layout_toStartOf="@+id/text"
+        app:hintTextColor="@color/master_textColorSecondary"
+        app:msgTextColor="@color/master_textColorPrimary" />
+
+    <TextView
+        android:id="@+id/text"
+        style="@style/cardViewTextViewInLayoutRight"
+        android:layout_toStartOf="@+id/next"
+        tools:text="111" />
+
+    <ImageView
+        android:id="@+id/next"
+        style="@style/HintTextViewSwitchStyle"
+        android:layout_centerVertical="true"
+        android:contentDescription="@string/more"
+        android:src="@drawable/ic_arrow_right" />
+</merge>

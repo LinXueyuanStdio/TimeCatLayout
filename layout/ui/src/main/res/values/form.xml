@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="view_content_inset_quarter">4dp</dimen>
+    <dimen name="view_content_inset_less">12dp</dimen>
+    <dimen name="view_content_inset">16dp</dimen>
+    <dimen name="view_content_inset_more">24dp</dimen>
+    <dimen name="view_content_inset_double">32dp</dimen>
+
+    <style name="ViewForm"/>
+
+    <style name="ViewForm.Label" parent="TextAppearance.MaterialComponents.Overline">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+
+        <item name="android:textColor">?colorAccent</item>
+        <item name="android:layout_marginTop">@dimen/view_content_inset</item>
+    </style>
+
+    <style name="ViewForm.Error" parent="TextAppearance.MaterialComponents.Caption">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">#f44336</item>
+        <item name="android:layout_marginBottom">@dimen/view_content_inset_quarter</item>
+    </style>
+
+    <style name="ViewForm.Dropdown">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+
+        <item name="android:layout_marginTop">@dimen/view_content_inset_less</item>
+    </style>
+
+    <style name="ViewForm.InputLayout">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+
+<!--        <item name="android:layout_marginLeft">-4dp</item>-->
+<!--        <item name="android:layout_marginRight">-4dp</item>-->
+    </style>
+
+    <style name="ViewForm.InputField" parent="TextAppearance.MaterialComponents.Body1">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+
+        <item name="android:layout_marginTop">@dimen/view_content_inset_quarter</item>
+        <item name="android:layout_marginLeft">-4dp</item>
+        <item name="android:layout_marginRight">-4dp</item>
+    </style>
+
+    <style name="ViewForm.Button" parent="Widget.MaterialComponents.Button">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+
+        <item name="android:layout_marginTop">@dimen/view_content_inset_more</item>
+        <item name="android:layout_marginLeft">-4dp</item>
+        <item name="android:layout_marginRight">-4dp</item>
+    </style>
+
+</resources>

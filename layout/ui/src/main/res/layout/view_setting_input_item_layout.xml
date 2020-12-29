@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:padding="@dimen/card_padding_width"
+    tools:parentTag="android.widget.RelativeLayout">
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/input_layout_name"
+        tools:hint="@string/empty"
+        style="@style/ViewForm.InputLayout">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:id="@+id/et_input"
+            android:layout_height="wrap_content"
+            android:inputType="text|textPersonName" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+</merge>
