@@ -24,6 +24,7 @@ import kotlin.contracts.contract
 data class Path(
     var name: String,
     var uuid: String = "",
+    var type: Int = -1,
     var isArchivePath: Boolean = false,
     var archiveFile: Path? = null,
     var parent: Path? = null
