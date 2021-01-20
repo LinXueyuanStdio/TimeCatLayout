@@ -33,6 +33,7 @@ class DividerItem : View {
 
     private fun initView(context: Context, attrs: AttributeSet?) {
         setBackgroundColor(Attr.getBackgroundDarkColor(context))
+        alpha = 0.25f
     }
 
     fun setup(context: Context?) {
