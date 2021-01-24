@@ -6,10 +6,9 @@ import android.util.TypedValue;
 import android.view.Gravity;
 import android.widget.ImageView;
 
-import androidx.annotation.DrawableRes;
-import androidx.core.content.ContextCompat;
+import com.timecat.component.identity.Attr;
 
-import com.timecat.layout.ui.R;
+import androidx.annotation.DrawableRes;
 
 public class BottomBarTab extends AbstractBottomBarTab {
     private ImageView mIcon;
@@ -46,9 +45,9 @@ public class BottomBarTab extends AbstractBottomBarTab {
     public void setSelected(boolean selected) {
         super.setSelected(selected);
         if (selected) {
-            mIcon.setColorFilter(ContextCompat.getColor(mContext, R.color.master_icon_view_special));
+            mIcon.setColorFilter(Attr.getAccentColor(mContext));
         } else {
-            mIcon.setColorFilter(ContextCompat.getColor(mContext, R.color.master_icon_view));
+            mIcon.setColorFilter(Attr.getIconColor(mContext));
         }
     }
 
