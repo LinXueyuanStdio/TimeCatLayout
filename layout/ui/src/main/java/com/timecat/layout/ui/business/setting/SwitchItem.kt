@@ -1,8 +1,6 @@
 package com.timecat.layout.ui.business.setting
 
-import android.annotation.TargetApi
 import android.content.Context
-import android.os.Build
 import android.util.AttributeSet
 import android.view.View
 import androidx.appcompat.widget.SwitchCompat
@@ -17,24 +15,11 @@ import com.timecat.layout.ui.standard.textview.HintTextView
  * @description 开关设置项
  * @usage 不要在xml里写文案，要在java里写
  */
-class SwitchItem : AbsItem {
-    constructor(context: Context) : super(context)
-    constructor(context: Context, attrs: AttributeSet) : super(context, attrs)
-
-    @TargetApi(Build.VERSION_CODES.HONEYCOMB)
-    constructor(
-        context: Context,
-        attrs: AttributeSet,
-        defStyleAttr: Int
-    ) : super(context, attrs, defStyleAttr)
-
-    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
-    constructor(
-        context: Context,
-        attrs: AttributeSet?,
-        defStyleAttr: Int,
-        defStyleRes: Int
-    ) : super(context, attrs, defStyleAttr, defStyleRes)
+class SwitchItem @JvmOverloads constructor(
+    context: Context,
+    attrs: AttributeSet? = null,
+    defStyleAttr: Int = 0
+) : AbsItem(context, attrs, defStyleAttr) {
 
     override fun layoutId(): Int {
         return R.layout.view_setting_switch_item_layout

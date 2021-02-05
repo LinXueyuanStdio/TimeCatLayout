@@ -15,12 +15,13 @@
 
     <ImageView
         android:id="@+id/iv"
-        android:layout_toStartOf="@+id/next"
-        android:src="@mipmap/ic_launcher"
         android:layout_width="96dp"
-        android:layout_centerVertical="true"
         android:layout_height="96dp"
+        android:layout_centerVertical="true"
+        android:layout_margin="@dimen/margin_small"
+        android:layout_toStartOf="@+id/next"
         android:contentDescription="@string/icon_shape"
+        android:src="@mipmap/ic_launcher"
         tools:text="111" />
 
     <ImageView

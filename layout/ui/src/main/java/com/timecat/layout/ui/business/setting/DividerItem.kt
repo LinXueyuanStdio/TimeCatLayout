@@ -14,20 +14,16 @@ import com.timecat.layout.ui.utils.ViewUtil
  * @description null
  * @usage null
  */
-class DividerItem : View {
-    constructor(context: Context) : super(context) {
-        initView(context, null)
+class DividerItem @JvmOverloads constructor(
+    context: Context,
+    attrs: AttributeSet? = null,
+    defStyleAttr: Int = 0
+) : View(context, attrs, defStyleAttr) {
+    init {
+        init(context, attrs)
     }
 
-    constructor(context: Context, attrs: AttributeSet?) : super(context, attrs) {
-        initView(context, attrs)
-    }
-
-    constructor(context: Context, attrs: AttributeSet?, defStyleAttr: Int) : super(
-        context,
-        attrs,
-        defStyleAttr
-    ) {
+    fun init(context: Context, attrs: AttributeSet?) {
         initView(context, attrs)
     }
 

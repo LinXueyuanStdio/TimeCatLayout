@@ -4,6 +4,7 @@ import android.content.Context
 import android.util.AttributeSet
 import android.view.Gravity
 import android.widget.LinearLayout
+import android.widget.RelativeLayout
 import com.timecat.layout.ui.R
 
 /**
@@ -13,11 +14,11 @@ import com.timecat.layout.ui.R
  * @description null
  * @usage null
  */
-class ContainerItem : LinearLayout {
-    constructor(context: Context?) : super(context)
-    constructor(context: Context?, attrs: AttributeSet?) : super(context, attrs)
-    constructor(context: Context?, attrs: AttributeSet?, defStyleAttr: Int)
-            : super(context, attrs, defStyleAttr)
+class ContainerItem @JvmOverloads constructor(
+    context: Context,
+    attrs: AttributeSet? = null,
+    defStyleAttr: Int = 0
+) : LinearLayout(context, attrs, defStyleAttr) {
 
     init {
         setBackgroundResource(R.color.trans)

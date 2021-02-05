@@ -7,9 +7,8 @@ import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 
-import com.bumptech.glide.Glide;
-
 import com.timecat.layout.ui.R;
+import com.timecat.layout.ui.utils.IconLoader;
 
 /**
  * @author dlink
@@ -55,7 +54,7 @@ public class FadeTransitionImageView extends BaseTransitionLayout {
 
     @Override
     public void firstInit(String url) {
-        Glide.with(getContext()).load(url).into(imageView1);
+        IconLoader.loadIcon(getContext(), imageView1, url);
         currentPosition = 0;
     }
 
@@ -80,6 +79,6 @@ public class FadeTransitionImageView extends BaseTransitionLayout {
     @Override
     public void saveNextPosition(int position, String url) {
         this.nextPosition = position;
-        Glide.with(getContext()).load(url).into(imageView2);
+        IconLoader.loadIcon(getContext(), imageView2, url);
     }
 }

@@ -16,25 +16,11 @@ import com.timecat.layout.ui.standard.textview.HintTextView
  * @description 下一步再继续的设置项
  * @usage 不要在xml里写文案，要在java里写
  */
-class NextItem : AbsItem {
-    constructor(context: Context) : super(context)
-    constructor(context: Context, attrs: AttributeSet) : super(context, attrs)
-
-    @TargetApi(Build.VERSION_CODES.HONEYCOMB)
-    constructor(
-        context: Context,
-        attrs: AttributeSet,
-        defStyleAttr: Int
-    ) : super(context, attrs, defStyleAttr)
-
-    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
-    constructor(
-        context: Context,
-        attrs: AttributeSet?,
-        defStyleAttr: Int,
-        defStyleRes: Int
-    ) : super(context, attrs, defStyleAttr, defStyleRes)
-
+class NextItem @JvmOverloads constructor(
+    context: Context,
+    attrs: AttributeSet? = null,
+    defStyleAttr: Int = 0
+) : AbsItem(context, attrs, defStyleAttr) {
 
     override fun layoutId(): Int {
         return R.layout.view_setting_next_item_layout

@@ -3,9 +3,11 @@ package com.timecat.layout.ui.business.setting
 import android.content.Context
 import android.util.AttributeSet
 import android.view.View
+import android.view.ViewGroup.LayoutParams.MATCH_PARENT
+import android.view.ViewGroup.LayoutParams.WRAP_CONTENT
 import android.widget.ImageView
 import com.timecat.layout.ui.R
-import com.timecat.layout.ui.layout.setShakelessClickListener
+import com.timecat.layout.ui.layout.*
 import com.timecat.layout.ui.listener.OnDebouncedClickListener
 import com.timecat.layout.ui.standard.textview.HintTextView
 import com.timecat.layout.ui.utils.IconLoader
@@ -17,39 +19,27 @@ import com.timecat.layout.ui.utils.IconLoader
  * @description 图片的设置项
  * @usage 不要在xml里写文案，要在java里写
  */
-class ImageItem @JvmOverloads constructor(
+class CenterIconItem @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     defStyleAttr: Int = 0
 ) : AbsItem(context, attrs, defStyleAttr) {
 
-    lateinit var hintTextView: HintTextView
     lateinit var imageView: ImageView
-    override fun layoutId(): Int = R.layout.view_setting_image_item_layout
+    override fun layoutId(): Int = 0
     override fun initView(context: Context, attrs: AttributeSet?) {
         super.initView(context, attrs)
-        hintTextView = findViewById(R.id.htv)
-        imageView = findViewById(R.id.iv)
-
-        imageView.isClickable = false
-        hintTextView.setShowAnimation(true)
+        imageView = ImageView {
+            layout_width = 96.dp
+            layout_height = 96.dp
+            centerInParent = true
+            isClickable = false
+        }
     }
 
-    var title: String?
-        get() = hintTextView.msg
-        set(value) {
-            hintTextView.msg = value
-        }
-    var hint: String?
-        get() = hintTextView.hint
-        set(value) {
-            hintTextView.hint = value
-            hintTextView.isShowHint = value != null
-        }
-
-    fun onClick(onClick: (item: ImageItem) -> Unit) {
+    fun onClick(onClick: (item: CenterIconItem) -> Unit) {
         setShakelessClickListener {
-            onClick(this@ImageItem)
+            onClick(this@CenterIconItem)
         }
     }
 

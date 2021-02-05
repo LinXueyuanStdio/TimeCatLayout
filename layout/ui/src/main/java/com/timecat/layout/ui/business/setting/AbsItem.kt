@@ -1,8 +1,6 @@
 package com.timecat.layout.ui.business.setting
 
-import android.annotation.TargetApi
 import android.content.Context
-import android.os.Build
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -16,31 +14,16 @@ import com.timecat.layout.ui.R
  * @description null
  * @usage null
  */
-abstract class AbsItem : RelativeLayout {
-    constructor(context: Context) : super(context) {
-        initView(context, null)
+abstract class AbsItem @JvmOverloads constructor(
+    context: Context,
+    attrs: AttributeSet? = null,
+    defStyleAttr: Int = 0
+) : RelativeLayout(context, attrs, defStyleAttr) {
+    init {
+        init(context, attrs)
     }
 
-    constructor(context: Context, attrs: AttributeSet?) : super(context, attrs) {
-        initView(context, attrs)
-    }
-
-    @TargetApi(Build.VERSION_CODES.HONEYCOMB)
-    constructor(context: Context, attrs: AttributeSet?, defStyleAttr: Int) : super(
-        context,
-        attrs,
-        defStyleAttr
-    ) {
-        initView(context, attrs)
-    }
-
-    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
-    constructor(
-        context: Context,
-        attrs: AttributeSet?,
-        defStyleAttr: Int,
-        defStyleRes: Int
-    ) : super(context, attrs, defStyleAttr, defStyleRes) {
+    fun init(context: Context, attrs: AttributeSet?) {
         initView(context, attrs)
     }
 

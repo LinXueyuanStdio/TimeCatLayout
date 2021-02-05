@@ -15,24 +15,11 @@ import com.timecat.layout.ui.standard.materialspinner.BlockMaterialSpinner
  * @description 单选
  * @usage null
  */
-class SpinnerItem : AbsItem {
-    constructor(context: Context) : super(context)
-    constructor(context: Context, attrs: AttributeSet) : super(context, attrs)
-
-    @TargetApi(Build.VERSION_CODES.HONEYCOMB)
-    constructor(
-        context: Context,
-        attrs: AttributeSet,
-        defStyleAttr: Int
-    ) : super(context, attrs, defStyleAttr)
-
-    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
-    constructor(
-        context: Context,
-        attrs: AttributeSet?,
-        defStyleAttr: Int,
-        defStyleRes: Int
-    ) : super(context, attrs, defStyleAttr, defStyleRes)
+class SpinnerItem @JvmOverloads constructor(
+    context: Context,
+    attrs: AttributeSet? = null,
+    defStyleAttr: Int = 0
+) : AbsItem(context, attrs, defStyleAttr) {
 
     override fun layoutId(): Int {
         return R.layout.view_setting_spinner_item_layout

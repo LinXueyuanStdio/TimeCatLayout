@@ -1,8 +1,6 @@
 package com.timecat.layout.ui.business.setting
 
-import android.annotation.TargetApi
 import android.content.Context
-import android.os.Build
 import android.text.Editable
 import android.text.InputType
 import android.text.TextWatcher
@@ -18,26 +16,11 @@ import com.timecat.layout.ui.R
  * @description null
  * @usage null
  */
-class InputItem : AbsItem {
-    constructor(context: Context) : super(context)
-    constructor(context: Context, attrs: AttributeSet) : super(context, attrs)
-
-    @TargetApi(Build.VERSION_CODES.HONEYCOMB)
-    constructor(
-        context: Context,
-        attrs: AttributeSet,
-        defStyleAttr: Int
-    ) : super(context, attrs, defStyleAttr)
-
-    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
-    constructor(
-        context: Context,
-        attrs: AttributeSet?,
-        defStyleAttr: Int,
-        defStyleRes: Int
-    ) : super(context, attrs, defStyleAttr, defStyleRes)
-
-
+class InputItem @JvmOverloads constructor(
+    context: Context,
+    attrs: AttributeSet? = null,
+    defStyleAttr: Int = 0
+) : AbsItem(context, attrs, defStyleAttr) {
     override fun layoutId(): Int {
         return R.layout.view_setting_input_item_layout
     }
@@ -57,9 +40,10 @@ class InputItem : AbsItem {
         inputEditText = findViewById(R.id.et_input)
         inputLayout = findViewById(R.id.input_layout_name)
     }
+
     override fun setupPadding() {
         val pad = resources.getDimension(R.dimen.card_padding_width).toInt()
-        setPadding(pad, pad/2, pad, pad/2)
+        setPadding(pad, pad / 2, pad, pad / 2)
     }
 
     var hint: String?
