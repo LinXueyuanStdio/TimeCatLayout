@@ -8,20 +8,20 @@ import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.widget.ImageView;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.core.content.res.ResourcesCompat;
-
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.RequestBuilder;
 import com.bumptech.glide.request.RequestOptions;
 import com.timecat.component.commonsdk.utils.override.LogUtil;
+import com.timecat.component.identity.Attr;
 import com.timecat.identity.font.FontAwesome;
 import com.timecat.identity.font.FontDrawable;
-import com.timecat.component.identity.Attr;
 import com.timecat.layout.ui.R;
 
 import java.util.Locale;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.core.content.res.ResourcesCompat;
 
 /**
  * @author 林学渊
@@ -42,9 +42,9 @@ public class IconLoader {
     public static void loadRoundIcon(Context context, ImageView iv, @Nullable String icon, int radius) {
         if (icon == null) return;
         LogUtil.se(icon);
-        if (icon.contains("R.drawable")) {
+        if (icon.startsWith(BUILDIN_DRAWABLE_SCHEME)) {
             loadDrawable(context, iv, icon);
-        } else if (icon.contains("R.mipmap")) {
+        } else if (icon.startsWith(BUILDIN_MIPMAP_SCHEME)) {
             loadMipmap(context, iv, icon);
         } else if (icon.startsWith(AVATAR_SCHEME)) {
             String hash = icon.substring(AVATAR_SCHEME.length());
@@ -53,7 +53,7 @@ public class IconLoader {
         } else if (icon.startsWith(FONTAWESOME_SCHEME)) {
             String url = icon.substring(FONTAWESOME_SCHEME.length());
             loadFontAwesome(context, iv, url);
-        } else if (icon.startsWith("app:")) {
+        } else if (icon.startsWith(APP_SCHEME)) {
             loadAppIcon(context, iv, icon);
         } else {
             loadUrlRoundIcon(context, iv, icon, radius);
@@ -103,7 +103,7 @@ public class IconLoader {
 
     public static void loadDrawable(Context context, ImageView iv, @NonNull String icon) {
         Resources resources = context.getResources();
-        int resId = resources.getIdentifier(icon.replace("R.drawable.", ""),
+        int resId = resources.getIdentifier(icon.replace(BUILDIN_DRAWABLE_SCHEME, ""),
                 "drawable", context.getPackageName());
         if (resId > 0) {
             Resources.Theme theme = resources.newTheme();
@@ -156,19 +156,19 @@ public class IconLoader {
                             String icon,
                             ImageView iv) {
         if (icon == null) return;
-        if (icon.contains("R.drawable")) {
+        if (icon.startsWith(BUILDIN_DRAWABLE_SCHEME)) {
             Resources resources = context.getResources();
-            String name = icon.replace("R.drawable.", "");
+            String name = icon.replace(BUILDIN_DRAWABLE_SCHEME, "");
             int resId = resources.getIdentifier(name, "drawable", context.getPackageName());
             Resources.Theme theme = resources.newTheme();
             theme.applyStyle(R.style.ThemeDark, true);
             iv.setImageDrawable(ResourcesCompat.getDrawable(resources, resId, theme));
-        } else if (icon.contains("R.mipmap")) {
+        } else if (icon.startsWith(BUILDIN_MIPMAP_SCHEME)) {
             Resources resources = context.getResources();
-            String name = icon.replace("R.mipmap.", "");
+            String name = icon.replace(BUILDIN_MIPMAP_SCHEME, "");
             int resId = resources.getIdentifier(name, "mipmap", context.getPackageName());
             iv.setImageResource(resId);
-        } else if (icon.startsWith("app:")) {
+        } else if (icon.startsWith(APP_SCHEME)) {
             String pkgName = icon.split(":")[1];
             final PackageManager pm = context.getPackageManager();
             ApplicationInfo applicationInfo;
@@ -207,11 +207,18 @@ public class IconLoader {
     }
 
     //region schema
-    public static final String IMAGE_REQUEST_HASH = "http://www.gravatar.com/avatar/%s?s=40&d=identicon";
+    //random avatar
     public static final String AVATAR_SCHEME = "avatar://";
+    public static final String IMAGE_REQUEST_HASH = "http://www.gravatar.com/avatar/%s?s=40&d=identicon";
+
+    //fontawesome
     public static final String FONTAWESOME_SCHEME = "fontawesome://";
     public static final String FONTAWESOME_BRAND = "brand/";
     public static final String FONTAWESOME_SOLID = "solid/";
     public static final String FONTAWESOME_REGULAR = "regular/";
+
+    public static final String APP_SCHEME = "app:";
+    public static final String BUILDIN_DRAWABLE_SCHEME = "R.drawable.";
+    public static final String BUILDIN_MIPMAP_SCHEME = "R.mipmap.";
     //endregion
 }
