@@ -17,11 +17,14 @@ import com.timecat.identity.font.FontAwesome;
 import com.timecat.identity.font.FontDrawable;
 import com.timecat.layout.ui.R;
 
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.Locale;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.content.res.ResourcesCompat;
+import timber.log.Timber;
 
 /**
  * @author 林学渊
@@ -40,7 +43,7 @@ public class IconLoader {
     }
 
     public static void loadRoundIcon(Context context, ImageView iv, @Nullable String icon, int radius) {
-        if (icon == null) return;
+        if (icon == null) { return; }
         LogUtil.se(icon);
         if (icon.startsWith(BUILDIN_DRAWABLE_SCHEME)) {
             loadDrawable(context, iv, icon);
@@ -62,9 +65,9 @@ public class IconLoader {
 
     public static void loadUrlIcon(Context context, ImageView iv, @NonNull String icon) {
         Glide.with(context)
-                .load(icon)
-                .apply(new RequestOptions().placeholder(R.drawable.ic_launcher))
-                .into(iv);
+             .load(icon)
+             .apply(new RequestOptions().placeholder(R.drawable.ic_launcher))
+             .into(iv);
     }
 
     public static void loadUrlRoundIcon(Context context, ImageView iv, @NonNull String icon, int radius) {
@@ -72,9 +75,9 @@ public class IconLoader {
         BorderRoundTransformation t = new BorderRoundTransformation(context, radius,
                 0, 0, 0, BorderRoundTransformation.all_corner);
         Glide.with(context)
-                .load(icon)
-                .apply(new RequestOptions().placeholder(R.drawable.ic_launcher).transform(t))
-                .into(iv);
+             .load(icon)
+             .apply(new RequestOptions().placeholder(R.drawable.ic_launcher).transform(t))
+             .into(iv);
     }
 
     public static void loadAppIcon(Context context, ImageView iv, @NonNull String icon) {
@@ -152,10 +155,10 @@ public class IconLoader {
     }
 
     public static void load(Context context,
-                            RequestOptions requestOptions,
-                            String icon,
-                            ImageView iv) {
-        if (icon == null) return;
+            RequestOptions requestOptions,
+            String icon,
+            ImageView iv) {
+        if (icon == null) { return; }
         if (icon.startsWith(BUILDIN_DRAWABLE_SCHEME)) {
             Resources resources = context.getResources();
             String name = icon.replace(BUILDIN_DRAWABLE_SCHEME, "");
@@ -184,14 +187,14 @@ public class IconLoader {
     }
 
     public static void loadGlide(Context context,
-                                 RequestOptions requestOptions,
-                                 String icon,
-                                 ImageView iv) {
+            RequestOptions requestOptions,
+            String icon,
+            ImageView iv) {
         Glide.with(context)
-                .load(icon)
-                .apply(requestOptions.placeholder(R.drawable.ic_launcher))
-                .thumbnail(placeholder(context, requestOptions))
-                .into(iv);
+             .load(icon)
+             .apply(requestOptions.placeholder(R.drawable.ic_launcher))
+             .thumbnail(placeholder(context, requestOptions))
+             .into(iv);
     }
 
     /**
@@ -204,6 +207,32 @@ public class IconLoader {
     private static RequestBuilder<Drawable> placeholder(Context context, RequestOptions requestOptions) {
         int resId = R.drawable.ic_launcher;
         return Glide.with(context).load(resId).apply(requestOptions);
+    }
+
+    public static String randomAvatar(String seed) {
+        return AVATAR_SCHEME + md5(seed);
+    }
+
+    public static String md5(final String s) {
+        try {
+            // Create MD5 Hash
+            MessageDigest digest = java.security.MessageDigest.getInstance("MD5");
+            digest.update(s.getBytes());
+            byte[] messageDigest = digest.digest();
+
+            // Create Hex String
+            StringBuffer hexString = new StringBuffer();
+            for (int i = 0; i < messageDigest.length; ++i) {
+                String h = Integer.toHexString(0xFF & messageDigest[i]);
+                while (h.length() < 2) { h = "0" + h; }
+                hexString.append(h);
+            }
+            return hexString.toString();
+
+        } catch (NoSuchAlgorithmException e) {
+            Timber.e(e);
+        }
+        return "";
     }
 
     //region schema
