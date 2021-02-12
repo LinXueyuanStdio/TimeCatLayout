@@ -1218,6 +1218,7 @@ inline fun View.onChildViewClick(
 /**
  * a new View.OnClickListener which prevents click shaking
  */
+@JvmOverloads
 fun View.setShakelessClickListener(threshold: Long = 800, onClick: (View) -> Unit) {
     setOnClickListener(MyClickListener(threshold) {
         onClick(it)

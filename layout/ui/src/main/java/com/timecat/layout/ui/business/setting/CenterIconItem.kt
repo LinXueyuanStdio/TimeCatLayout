@@ -30,8 +30,8 @@ class CenterIconItem @JvmOverloads constructor(
     override fun initView(context: Context, attrs: AttributeSet?) {
         super.initView(context, attrs)
         imageView = ImageView {
-            layout_width = 96.dp
-            layout_height = 96.dp
+            layout_width = 72
+            layout_height = 72
             centerInParent = true
             isClickable = false
         }
