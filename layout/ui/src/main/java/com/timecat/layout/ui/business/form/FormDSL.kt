@@ -18,10 +18,13 @@ import com.timecat.layout.ui.business.setting.*
 
 fun letMeKnow(message: String) = LetMeKnow.report(message)
 
-//region 下一个
-fun ViewGroup.add(view: () -> View) {
-    addView(view())
+fun ViewGroup.add(view: () -> View) = addView(view())
+fun ViewGroup.add(vararg view: () -> View) {
+    for (v in view) {
+        addView(v())
+    }
 }
+//region 下一个
 
 fun ViewGroup.Next(
     title: String,
