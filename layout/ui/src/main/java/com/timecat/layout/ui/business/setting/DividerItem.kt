@@ -5,6 +5,10 @@ import android.util.AttributeSet
 import android.view.View
 import android.view.ViewGroup
 import com.timecat.component.identity.Attr
+import com.timecat.layout.ui.layout.dp
+import com.timecat.layout.ui.layout.layout_height
+import com.timecat.layout.ui.layout.layout_width
+import com.timecat.layout.ui.layout.match_parent
 import com.timecat.layout.ui.utils.ViewUtil
 
 /**
@@ -30,19 +34,7 @@ class DividerItem @JvmOverloads constructor(
     private fun initView(context: Context, attrs: AttributeSet?) {
         setBackgroundColor(Attr.getBackgroundDarkColor(context))
         alpha = 0.25f
-    }
-
-    fun setup(context: Context?) {
-        val dp_5 = ViewUtil.dp2px(context, 10f)
-        val lp = layoutParams
-        if (lp != null) {
-            lp.width = ViewGroup.LayoutParams.MATCH_PARENT
-            lp.height = dp_5
-        }
-//        if (lp is LinearLayout.LayoutParams) {
-//            val dp_13 = ViewUtil.dp2px(context, 13f)
-//            lp.leftMargin = dp_13
-//            lp.rightMargin = dp_13
-//        }
+        layout_width = match_parent
+        layout_height = 10.dp
     }
 }

@@ -406,10 +406,11 @@ fun ViewGroup.MultiLineInput(
 //endregion
 
 //region DSL
-fun ViewGroup.addDivider(): DividerItem = DividerItem(context).also {
-    addView(it)
-    it.setup(context)
-}
+fun ViewGroup.Divider(
+    style: Int? = null,
+    autoAdd: Boolean = true,
+): DividerItem = DividerItem(style.wrapContext(context))
+    .also { if (autoAdd) addView(it) }
 
 fun ViewGroup.Spinner(
     style: Int? = null,
