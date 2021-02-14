@@ -24,9 +24,16 @@ fun ViewGroup.add(vararg view: () -> View) {
         addView(v())
     }
 }
+
 fun ViewGroup.add(vararg view: View) {
     for (v in view) {
         addView(v)
+    }
+}
+
+fun ViewGroup.add(vararg view: Pair<View, Int>) {
+    for (v in view) {
+        addView(v.first, v.second)
     }
 }
 //region 下一个
@@ -208,6 +215,11 @@ fun ViewGroup.OneLineInput(build: InputItem.() -> Unit) = InputItem(context).app
 fun ViewGroup.OneLineInput(title: String, prefill: String) = InputItem(context).apply {
     this.hint = title
     this.text = prefill
+}
+fun ViewGroup.NumberInput(title: String, prefill: String) = InputItem(context).apply {
+    this.hint = title
+    this.text = prefill
+    inputType = InputType.TYPE_CLASS_NUMBER or InputType.TYPE_NUMBER_FLAG_SIGNED
 }
 
 fun ViewGroup.OneLineInput(
