@@ -9,6 +9,7 @@ import androidx.appcompat.view.ContextThemeWrapper
 import com.timecat.component.commonsdk.utils.LetMeKnow
 import com.timecat.component.identity.Attr
 import com.timecat.layout.ui.business.setting.*
+import com.timecat.layout.ui.layout.setShakelessClickListener
 
 /**
  * @author 林学渊
@@ -445,4 +446,24 @@ fun ViewGroup.VerticalContainer(
     autoAdd: Boolean = true,
     build: ContainerItem.() -> Unit
 ) = ContainerItem(style.wrapContext(context)).apply(build).also { if (autoAdd) addView(it) }
+
+fun ViewGroup.MaterialButton(
+    text: String,
+    style: Int? = null,
+    autoAdd: Boolean = true,
+    onClick: (View) -> Unit
+) = com.google.android.material.button.MaterialButton(style.wrapContext(context)).apply {
+    setText(text)
+    setShakelessClickListener(onClick = onClick)
+}.also { if (autoAdd) addView(it) }
+
+fun ViewGroup.Chip(
+    text: String,
+    style: Int? = null,
+    autoAdd: Boolean = true,
+    onClick: (View) -> Unit
+) = com.google.android.material.chip.Chip(style.wrapContext(context)).apply {
+    setText(text)
+    setShakelessClickListener(onClick = onClick)
+}.also { if (autoAdd) addView(it) }
 //endregion
