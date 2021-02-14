@@ -10,12 +10,12 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
-import androidx.annotation.ColorInt;
-import androidx.annotation.DrawableRes;
-
 import com.timecat.layout.ui.R;
 
 import java.util.List;
+
+import androidx.annotation.ColorInt;
+import androidx.annotation.DrawableRes;
 
 /**
  * 基础Spinner适配器

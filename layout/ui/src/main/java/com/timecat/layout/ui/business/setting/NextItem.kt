@@ -1,8 +1,6 @@
 package com.timecat.layout.ui.business.setting
 
-import android.annotation.TargetApi
 import android.content.Context
-import android.os.Build
 import android.util.AttributeSet
 import android.widget.TextView
 import com.timecat.layout.ui.R
@@ -38,7 +36,7 @@ class NextItem @JvmOverloads constructor(
         hintTextView.setShowAnimation(true)
     }
 
-    var title: String?
+    var title: String
         get() = hintTextView.msg
         set(value) {
             hintTextView.msg = value
@@ -49,8 +47,8 @@ class NextItem @JvmOverloads constructor(
             hintTextView.hint = value
             hintTextView.isShowHint = value != null
         }
-    var text: CharSequence?
-        get() = textView.text
+    var text: String
+        get() = textView.text.toString()
         set(value) {
             textView.text = value
         }

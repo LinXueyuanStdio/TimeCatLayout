@@ -44,7 +44,7 @@ class PathField(
 ) : FormField<PathField, NextItem, CharSequence>(container, nextItem, name) {
     init {
         onErrors { view, errors ->
-            view.text = errors.firstOrNull()?.toString()
+            view.text = errors.firstOrNull()?.toString() ?: ""
         }
     }
 

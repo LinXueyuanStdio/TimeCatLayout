@@ -33,7 +33,7 @@ class ImageItem @JvmOverloads constructor(
         hintTextView.setShowAnimation(true)
     }
 
-    var title: String?
+    var title: String
         get() = hintTextView.msg
         set(value) {
             hintTextView.msg = value

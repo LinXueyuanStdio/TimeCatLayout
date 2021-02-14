@@ -36,8 +36,8 @@ class SpinnerItem @JvmOverloads constructor(
         setPadding(pad, pad / 2, pad, pad / 2)
     }
 
-    var title
-        get() = titleTv.text
+    var title: String
+        get() = titleTv.text.toString()
         set(value) {
             titleTv.setText(value)
         }

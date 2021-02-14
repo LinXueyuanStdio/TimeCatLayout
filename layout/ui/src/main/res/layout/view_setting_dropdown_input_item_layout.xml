@@ -6,15 +6,17 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/input_layout_name"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:hint="@string/empty">
+        tools:hint="@string/history_data">
 
-        <com.google.android.material.textfield.TextInputEditText
+        <com.google.android.material.textfield.MaterialAutoCompleteTextView
             android:id="@+id/et_input"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="text|textPersonName" />
+            android:inputType="none"
+            tools:text="@string/history_data" />
 
     </com.google.android.material.textfield.TextInputLayout>
 </merge>

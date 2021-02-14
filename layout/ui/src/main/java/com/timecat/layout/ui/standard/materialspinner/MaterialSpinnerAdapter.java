@@ -12,7 +12,7 @@ import java.util.List;
  */
 public class MaterialSpinnerAdapter<T> extends MaterialSpinnerBaseAdapter<T> {
 
-    private final List<T> mItems;
+    protected List<T> mItems;
 
     public MaterialSpinnerAdapter(Context context, List<T> items) {
         super(context);

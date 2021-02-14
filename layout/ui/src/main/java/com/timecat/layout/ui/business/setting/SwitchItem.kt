@@ -55,13 +55,13 @@ class SwitchItem @JvmOverloads constructor(
             hintTextView.hint = value
             hintTextView.isShowHint = value != null
         }
-    var isChecked
+    var isChecked: Boolean
         get() = switchCompat.isChecked
         set(value) {
             switchCompat.isChecked = value
         }
     var onCheckChange: (isChecked: Boolean) -> Unit = {}
-    var initCheck
+    var initCheck: Boolean
         get() = switchCompat.isChecked
         set(value) {
             switchCompat.setOnCheckedChangeListener(null)

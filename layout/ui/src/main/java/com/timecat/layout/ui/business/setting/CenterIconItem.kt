@@ -2,14 +2,8 @@ package com.timecat.layout.ui.business.setting
 
 import android.content.Context
 import android.util.AttributeSet
-import android.view.View
-import android.view.ViewGroup.LayoutParams.MATCH_PARENT
-import android.view.ViewGroup.LayoutParams.WRAP_CONTENT
 import android.widget.ImageView
-import com.timecat.layout.ui.R
 import com.timecat.layout.ui.layout.*
-import com.timecat.layout.ui.listener.OnDebouncedClickListener
-import com.timecat.layout.ui.standard.textview.HintTextView
 import com.timecat.layout.ui.utils.IconLoader
 
 /**
@@ -30,20 +24,22 @@ class CenterIconItem @JvmOverloads constructor(
     override fun initView(context: Context, attrs: AttributeSet?) {
         super.initView(context, attrs)
         imageView = ImageView {
-            layout_width = 72
-            layout_height = 72
+            layout_width = 50
+            layout_height = 50
             centerInParent = true
             isClickable = false
         }
     }
 
+    var icon: String = "R.drawable.ic_launcher"
+        set(value) {
+            IconLoader.loadIcon(context, imageView, value)
+            field = value
+        }
+
     fun onClick(onClick: (item: CenterIconItem) -> Unit) {
         setShakelessClickListener {
             onClick(this@CenterIconItem)
         }
-    }
-
-    fun setImage(url: String?) {
-        IconLoader.loadIcon(context, imageView, url)
     }
 }

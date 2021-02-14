@@ -16,14 +16,12 @@ import com.timecat.layout.ui.R
  * @description null
  * @usage null
  */
-class InputItem @JvmOverloads constructor(
+open class InputItem @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     defStyleAttr: Int = 0
 ) : AbsItem(context, attrs, defStyleAttr) {
-    override fun layoutId(): Int {
-        return R.layout.view_setting_input_item_layout
-    }
+    override fun layoutId(): Int = R.layout.view_setting_input_item_layout
 
     lateinit var inputLayout: TextInputLayout
     lateinit var inputEditText: TextInputEditText
@@ -46,26 +44,22 @@ class InputItem @JvmOverloads constructor(
         setPadding(pad, pad / 2, pad, pad / 2)
     }
 
-    var hint: String?
-        get() = inputLayout.hint?.toString()
+    var hint: String
+        get() = inputLayout.hint?.toString() ?:""
         set(value) {
             inputLayout.hint = value
         }
-    var text: String?
+    var text: String
         get() = inputEditText.text?.toString() ?: ""
         set(value) {
             inputEditText.removeTextChangedListener(tw)
-            inputEditText.setText(value ?: "")
+            inputEditText.setText(value)
             inputEditText.addTextChangedListener(tw)
         }
-    var inputType: Int?
+    var inputType: Int
         get() = inputEditText.inputType
         set(value) {
-            if (value == null) {
-                inputEditText.inputType = InputType.TYPE_CLASS_TEXT
-            } else {
-                inputEditText.inputType = value
-            }
+            inputEditText.inputType = value
         }
 
     var onTextChange: (value: String?) -> Unit = {}
