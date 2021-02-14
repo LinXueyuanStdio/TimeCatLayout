@@ -1,8 +1,6 @@
 package com.timecat.layout.ui.business.setting
 
-import android.annotation.TargetApi
 import android.content.Context
-import android.os.Build
 import android.util.AttributeSet
 import android.widget.TextView
 import com.timecat.layout.ui.R
@@ -35,7 +33,7 @@ class SpinnerItem @JvmOverloads constructor(
 
     override fun setupPadding() {
         val pad = resources.getDimension(R.dimen.card_padding_width).toInt()
-        setPadding(pad, pad/2, pad, pad/2)
+        setPadding(pad, pad / 2, pad, pad / 2)
     }
 
     var title
@@ -46,7 +44,7 @@ class SpinnerItem @JvmOverloads constructor(
 
     fun <T> onItemSelected(items: List<T>, onSelect: (data: T, index: Int) -> Unit) {
         materialSpinner.setItems(items)
-        materialSpinner.setOnItemSelectedListener (object : BlockMaterialSpinner.OnItemSelectedListener<T> {
+        materialSpinner.setOnItemSelectedListener(object : BlockMaterialSpinner.OnItemSelectedListener<T> {
             override fun onItemSelected(view: BlockMaterialSpinner?, position: Int, id: Long, item: T) {
                 onSelect(item, position)
             }

@@ -2,11 +2,9 @@ package com.timecat.layout.ui.business.setting
 
 import android.content.Context
 import android.util.AttributeSet
-import android.view.View
 import android.widget.ImageView
 import com.timecat.layout.ui.R
 import com.timecat.layout.ui.layout.setShakelessClickListener
-import com.timecat.layout.ui.listener.OnDebouncedClickListener
 import com.timecat.layout.ui.standard.textview.HintTextView
 import com.timecat.layout.ui.utils.IconLoader
 
@@ -46,14 +44,15 @@ class ImageItem @JvmOverloads constructor(
             hintTextView.hint = value
             hintTextView.isShowHint = value != null
         }
+    var icon: String = "R.drawable.ic_launcher"
+        set(value) {
+            IconLoader.loadIcon(context, imageView, value)
+            field = value
+        }
 
     fun onClick(onClick: (item: ImageItem) -> Unit) {
         setShakelessClickListener {
             onClick(this@ImageItem)
         }
-    }
-
-    fun setImage(url: String?) {
-        IconLoader.loadIcon(context, imageView, url)
     }
 }
