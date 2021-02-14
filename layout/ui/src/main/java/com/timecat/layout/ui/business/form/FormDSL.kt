@@ -24,6 +24,11 @@ fun ViewGroup.add(vararg view: () -> View) {
         addView(v())
     }
 }
+fun ViewGroup.add(vararg view: View) {
+    for (v in view) {
+        addView(v)
+    }
+}
 //region 下一个
 
 fun ViewGroup.Next(
@@ -199,6 +204,11 @@ fun ViewGroup.Body(content: String): HeadItem = HeadItem(context).apply {
 
 fun ViewGroup.Input(build: InputItem.() -> Unit) = OneLineInput(build)
 fun ViewGroup.OneLineInput(build: InputItem.() -> Unit) = InputItem(context).apply(build)
+
+fun ViewGroup.OneLineInput(title: String, prefill: String) = InputItem(context).apply {
+    this.hint = title
+    this.text = prefill
+}
 
 fun ViewGroup.OneLineInput(
     title: String,
