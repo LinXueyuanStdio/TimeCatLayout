@@ -18,7 +18,7 @@ import com.timecat.layout.ui.layout.setShakelessClickListener
  * @description null
  * @usage null
  */
-private fun Int?.wrapContext(context: Context): Context {
+fun Int?.wrapContext(context: Context): Context {
     return if (this != null)
         ContextThemeWrapper(context, this)
     else
@@ -135,6 +135,24 @@ fun ViewGroup.Slide(
         SetValue(value)
     }
 }.also { if (autoAdd) addView(it) }
+
+fun ViewGroup.StepSlide(
+    from: Float = 1f,
+    to: Float = 100f,
+    step: Float = 1f,
+    defaultValue: Float = 1f,
+    style: Int? = null,
+    autoAdd: Boolean = true,
+    SetValue: (Float) -> Unit = {}
+): StepSliderItem = StepSliderItem(style.wrapContext(context)).apply {
+    valueFrom = from
+    valueTo = to
+    stepSize = step
+    this.value = defaultValue
+    onSlide { value ->
+        SetValue(value)
+    }
+}.also { if (autoAdd) addView(it) }
 //endregion
 
 //region 开关
@@ -182,8 +200,6 @@ fun <T> ViewGroup.Dropdown(
     this.hint = title
     this.items = items
 }.also { if (autoAdd) addView(it) }
-
-
 //endregion
 
 //region 图片
@@ -447,6 +463,12 @@ fun ViewGroup.VerticalContainer(
     autoAdd: Boolean = true,
     build: ContainerItem.() -> Unit
 ) = ContainerItem(style.wrapContext(context)).apply(build).also { if (autoAdd) addView(it) }
+
+fun ViewGroup.StepSlider(
+    style: Int? = null,
+    autoAdd: Boolean = true,
+    build: StepSliderItem.() -> Unit
+) = StepSliderItem(style.wrapContext(context)).apply(build).also { if (autoAdd) addView(it) }
 
 fun ViewGroup.MaterialButton(
     text: String,
