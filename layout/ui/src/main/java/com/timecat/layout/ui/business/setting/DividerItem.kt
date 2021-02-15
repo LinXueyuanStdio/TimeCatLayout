@@ -35,6 +35,6 @@ class DividerItem @JvmOverloads constructor(
         setBackgroundColor(Attr.getBackgroundDarkColor(context))
         alpha = 0.25f
         layout_width = match_parent
-        layout_height = 10.dp
+        layout_height = 10
     }
 }

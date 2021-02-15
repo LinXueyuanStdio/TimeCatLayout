@@ -9,6 +9,7 @@ import androidx.appcompat.view.ContextThemeWrapper
 import com.timecat.component.commonsdk.utils.LetMeKnow
 import com.timecat.component.identity.Attr
 import com.timecat.layout.ui.business.setting.*
+import com.timecat.layout.ui.layout.margin
 import com.timecat.layout.ui.layout.setShakelessClickListener
 
 /**
@@ -478,7 +479,7 @@ fun ViewGroup.MaterialButton(
 ) = com.google.android.material.button.MaterialButton(style.wrapContext(context)).apply {
     setText(text)
     setShakelessClickListener(onClick = onClick)
-}.also { if (autoAdd) addView(it) }
+}.also { if (autoAdd) addView(it) }.also { it.margin = 10 }
 
 fun ViewGroup.Chip(
     text: String,
