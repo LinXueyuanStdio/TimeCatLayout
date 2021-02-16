@@ -2,6 +2,7 @@ package com.timecat.layout.ui.drawabe
 
 import android.graphics.Color
 import android.graphics.drawable.Drawable
+import com.timecat.layout.ui.layout.dp
 import top.defaults.drawabletoolbox.DrawableBuilder
 import top.defaults.drawabletoolbox.LayerDrawableBuilder
 import top.defaults.drawabletoolbox.StateListDrawableBuilder
@@ -68,7 +69,7 @@ fun roundBorderSelector(
 ): Drawable {
     val layer1 = DrawableBuilder()
         .rectangle()
-        .cornerRadius(5)
+        .cornerRadius(5.dp)
         .hairlineBordered()
         .strokeColor(colorDefault)
         .strokeColorPressed(colorPressed)
@@ -76,13 +77,13 @@ fun roundBorderSelector(
     val layer2 = DrawableBuilder()
         .rectangle()
         .rounded()
-        .cornerRadius(5)
+        .cornerRadius(5.dp)
         .solidColor(colorDefault)
         .build()
     val layer3 = DrawableBuilder()
         .rectangle()
         .rounded()
-        .cornerRadius(5)
+        .cornerRadius(5.dp)
         .solidColor(Color.WHITE)
         .ripple()
         .rippleColor(colorDefault)
@@ -92,7 +93,7 @@ fun roundBorderSelector(
         .rounded()
         .hairlineBordered()
         .longDashed()
-        .cornerRadius(5)
+        .cornerRadius(5.dp)
         .solidColor(Color.WHITE)
         .ripple()
         .rippleColor(colorDefault)
@@ -100,29 +101,19 @@ fun roundBorderSelector(
 
     val layer5 = DrawableBuilder()
         .rectangle()
-        .cornerRadius(5)
+        .rounded()
+        .cornerRadius(5.dp)
         .hairlineBordered()
         .strokeColor(colorDefault)
         .strokeColorPressed(colorPressed)
         .build()
     val normalState = layer5
-    val selectedState = LayerDrawableBuilder()
-        .add(layer1)
-        .add(layer2)
-        .inset(10)
-        .add(layer3)
-        .inset(20).build()
-    val disabledState = LayerDrawableBuilder()
-        .add(layer1)
-        .add(layer2)
-        .inset(10)
-        .add(layer4)
-        .inset(20).build()
+    val selectedState = layer1
+    val disabledState = layer4
     val pressedState = LayerDrawableBuilder()
         .add(layer1)
         .inset(10)
-        .add(layer3)
-        .inset(20).build()
+        .add(layer5).build()
     return StateListDrawableBuilder()
         .normal(normalState)
         .pressed(pressedState)
