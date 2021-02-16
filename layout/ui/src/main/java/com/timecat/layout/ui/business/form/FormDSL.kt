@@ -154,6 +154,23 @@ fun ViewGroup.StepSlide(
         SetValue(value)
     }
 }.also { if (autoAdd) addView(it) }
+fun ViewGroup.StepSlide(
+    from: Int = 1,
+    to: Int = 100,
+    step: Int = 1,
+    defaultValue: Int = 1,
+    style: Int? = null,
+    autoAdd: Boolean = true,
+    SetValue: (Float) -> Unit = {}
+): StepSliderItem = StepSliderItem(style.wrapContext(context)).apply {
+    valueFrom = from.toFloat()
+    valueTo = to.toFloat()
+    stepSize = step.toFloat()
+    this.value = defaultValue.toFloat()
+    onSlide { value ->
+        SetValue(value)
+    }
+}.also { if (autoAdd) addView(it) }
 //endregion
 
 //region 开关
