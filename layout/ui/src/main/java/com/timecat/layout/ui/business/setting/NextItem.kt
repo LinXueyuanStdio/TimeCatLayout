@@ -47,10 +47,10 @@ class NextItem @JvmOverloads constructor(
             hintTextView.hint = value
             hintTextView.isShowHint = value != null
         }
-    var text: String
-        get() = textView.text.toString()
+    var text: String = ""
         set(value) {
             textView.text = value
+            field = value
         }
 
     fun onNext(onClick: () -> Unit) {
