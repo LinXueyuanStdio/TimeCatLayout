@@ -28,7 +28,6 @@ class HeadItem @JvmOverloads constructor(
     }
 
     private fun initView(context: Context, attrs: AttributeSet?) {
-        gravity = Gravity.CENTER_HORIZONTAL or Gravity.BOTTOM
         val dp_small = ViewUtil.dp2px(context, 10f)
         //        int dp_medium = ViewUtil.dp2px(context, 20f);
         setPadding(dp_small, dp_small, dp_small, dp_small)

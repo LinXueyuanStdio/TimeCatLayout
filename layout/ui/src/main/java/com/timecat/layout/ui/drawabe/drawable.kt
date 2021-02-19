@@ -1,7 +1,9 @@
 package com.timecat.layout.ui.drawabe
 
+import android.content.Context
 import android.graphics.Color
 import android.graphics.drawable.Drawable
+import com.timecat.layout.ui.R
 import com.timecat.layout.ui.layout.dp
 import top.defaults.drawabletoolbox.DrawableBuilder
 import top.defaults.drawabletoolbox.LayerDrawableBuilder
@@ -62,4 +64,13 @@ fun roundRectSelector(
         .selected(selectedState)
         .disabled(disabledState)
         .build()
+}
+
+fun selectableItemBackground(context: Context): Drawable? {
+    val typedArray = context.obtainStyledAttributes(
+        intArrayOf(R.attr.selectableItemBackground)
+    )
+    val drawable = typedArray.getDrawable(0)
+    typedArray.recycle()
+    return drawable
 }

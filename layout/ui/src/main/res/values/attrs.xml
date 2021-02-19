@@ -649,4 +649,10 @@
         <!--弹出窗的动画样式-->
         <attr name="ms_pop_anim_style" format="reference" />
     </declare-styleable>
+
+    <declare-styleable name="NineGridView">
+        <attr name="bigPictureMaxHeight" format="dimension" />
+        <attr name="bigPictureMinHeight" format="dimension" />
+        <attr name="pictureSpace" format="dimension" />
+    </declare-styleable>
 </resources>

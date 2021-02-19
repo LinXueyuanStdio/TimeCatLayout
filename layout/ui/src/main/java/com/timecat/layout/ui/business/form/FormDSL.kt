@@ -9,6 +9,7 @@ import androidx.appcompat.view.ContextThemeWrapper
 import com.timecat.component.commonsdk.utils.LetMeKnow
 import com.timecat.component.identity.Attr
 import com.timecat.layout.ui.business.setting.*
+import com.timecat.layout.ui.layout.LinearLayout
 import com.timecat.layout.ui.layout.margin
 import com.timecat.layout.ui.layout.setShakelessClickListener
 
@@ -481,6 +482,15 @@ fun ViewGroup.VerticalContainer(
     autoAdd: Boolean = true,
     build: ContainerItem.() -> Unit
 ) = ContainerItem(style.wrapContext(context)).apply(build).also { if (autoAdd) addView(it) }
+
+fun ViewGroup.HorizontalContainer(
+    style: Int? = null,
+    autoAdd: Boolean = true,
+    build: ContainerItem.() -> Unit
+) = ContainerItem(style.wrapContext(context)).apply(build).also {
+    it.orientation = android.widget.LinearLayout.HORIZONTAL
+    if (autoAdd) addView(it)
+}
 
 fun ViewGroup.StepSlider(
     style: Int? = null,
