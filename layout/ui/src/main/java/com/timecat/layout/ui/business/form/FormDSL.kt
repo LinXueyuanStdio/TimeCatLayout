@@ -9,7 +9,6 @@ import androidx.appcompat.view.ContextThemeWrapper
 import com.timecat.component.commonsdk.utils.LetMeKnow
 import com.timecat.component.identity.Attr
 import com.timecat.layout.ui.business.setting.*
-import com.timecat.layout.ui.layout.LinearLayout
 import com.timecat.layout.ui.layout.margin
 import com.timecat.layout.ui.layout.setShakelessClickListener
 
@@ -103,7 +102,7 @@ fun ViewGroup.UnitSlide(
     from: Float, to: Float, value: Float,
     style: Int? = null,
     autoAdd: Boolean = true,
-    SetValue: (Float) -> Unit
+    SetValue: (Float, SliderItem) -> Unit
 ): SliderItem = SliderItem(style.wrapContext(context)).apply {
     valueFrom = from
     valueTo = to
@@ -114,7 +113,7 @@ fun ViewGroup.UnitSlide(
     this.text = "${this.value} $unit"
     onSlide { value ->
         text = "$value $unit"
-        SetValue(value)
+        SetValue(value, this)
     }
 }.also { if (autoAdd) addView(it) }
 
@@ -124,7 +123,7 @@ fun ViewGroup.Slide(
     from: Float, to: Float, value: Float,
     style: Int? = null,
     autoAdd: Boolean = true,
-    SetValue: (Float) -> Unit
+    SetValue: (Float, SliderItem) -> Unit
 ): SliderItem = SliderItem(style.wrapContext(context)).apply {
     valueFrom = from
     valueTo = to
@@ -134,7 +133,7 @@ fun ViewGroup.Slide(
     this.value = value
     this.text = unit
     onSlide { value ->
-        SetValue(value)
+        SetValue(value, this)
     }
 }.also { if (autoAdd) addView(it) }
 
@@ -155,6 +154,7 @@ fun ViewGroup.StepSlide(
         SetValue(value)
     }
 }.also { if (autoAdd) addView(it) }
+
 fun ViewGroup.StepSlide(
     from: Int = 1,
     to: Int = 100,
@@ -347,7 +347,7 @@ fun ViewGroup.CenterHead(
 
 fun ViewGroup.Head(
     title: String,
-    textSize: Float,
+    textSize: Float = 16f,
     style: Int? = null,
     autoAdd: Boolean = true
 ): HeadItem = HeadItem(style.wrapContext(context)).apply {
