@@ -517,4 +517,20 @@ fun ViewGroup.Chip(
     setText(text)
     setShakelessClickListener(onClick = onClick)
 }.also { if (autoAdd) addView(it) }
+
+fun ViewGroup.StepCounter(
+    step: Int = 1,
+    defaultValue: Int = 1,
+    min: Int = 1,
+    max: Int = 2,
+    style: Int? = null,
+    autoAdd: Boolean = true,
+    SetValue: (Int) -> Unit = {}
+): CounterItem = CounterItem(style.wrapContext(context)).apply {
+    stepSize = step
+    value = defaultValue
+    this.min = min
+    this.max = max
+    onCount = SetValue
+}.also { if (autoAdd) addView(it) }
 //endregion

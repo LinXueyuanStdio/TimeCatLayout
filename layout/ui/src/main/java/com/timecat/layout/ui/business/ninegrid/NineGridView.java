@@ -16,7 +16,6 @@ import com.blankj.utilcode.util.ScreenUtils;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.gif.GifDrawable;
 import com.bumptech.glide.request.RequestOptions;
-import com.bumptech.glide.request.target.Target;
 import com.bumptech.glide.request.transition.Transition;
 import com.timecat.component.identity.Attr;
 import com.timecat.layout.ui.R;
@@ -606,7 +605,7 @@ public class NineGridView extends CardView {
             RequestOptions op =  new RequestOptions()
                     .error(R.mipmap.bga_pp_ic_holder_light)
                     .placeholder(R.mipmap.bga_pp_ic_holder_light)
-                    .override(Target.SIZE_ORIGINAL)
+                    .override(mBaseLength)
                     .centerCrop();
             Glide.with(this)
                  .load(mUrls.get(i))

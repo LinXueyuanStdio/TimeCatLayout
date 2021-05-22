@@ -32,6 +32,7 @@ dependencies {
     api rootProject.ext.dependencies["circleimageview"]
     api rootProject.ext.dependencies["BaseRecyclerViewAdapterHelper"]
     api 'com.github.duanhong169:drawabletoolbox:1.0.7'
+    api 'com.github.sephiroth74:NumberSlidingPicker:v1.0.3'
     api 'com.afollestad:vvalidator:0.5.2'
     api 'eu.davidea:flipview:1.2.0'
     api rootProject.ext.dependencies["countdownview"]

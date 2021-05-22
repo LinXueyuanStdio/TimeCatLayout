@@ -36,14 +36,14 @@ class RewardItem @JvmOverloads constructor(
 
     init {
         orientation = VERTICAL
-        layout_width = 48
+        layout_width = wrap_content
         layout_height = wrap_content
         padding = 4
         margin = 4
         imageView = ImageView {
             layout_width = 36
             layout_height = 36
-            margin = 4
+            margin = 2
             layout_gravity = gravity_center
             isClickable = false
         }
@@ -52,13 +52,15 @@ class RewardItem @JvmOverloads constructor(
             layout_height = wrap_content
             layout_gravity = gravity_center
             isClickable = false
+            margin_top = 4
+            margin_bottom = 4
             setTextColor(Attr.getSecondaryTextColor(context))
             setTextSize(12f)
         }
         nameView = TextView {
             layout_width = wrap_content
             layout_height = wrap_content
-            margin = 4
+            margin = 2
             layout_gravity = gravity_center
             isClickable = false
             setTextColor(Attr.getSecondaryTextColor(context))
