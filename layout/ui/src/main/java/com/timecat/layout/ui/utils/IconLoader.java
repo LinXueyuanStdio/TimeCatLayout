@@ -20,6 +20,7 @@ import com.timecat.layout.ui.R;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Locale;
+import java.util.UUID;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -52,7 +53,11 @@ public class IconLoader {
             loadMipmap(context, iv, icon);
         } else if (icon.startsWith(AVATAR_SCHEME)) {
             String hash = icon.substring(AVATAR_SCHEME.length());
-            String url = String.format(Locale.getDefault(), IMAGE_REQUEST_HASH, hash);
+            String url = String.format(Locale.getDefault(), AVATAR_REQUEST_HASH, hash);
+            loadUrlRoundIcon(context, iv, url, radius);
+        } else if (icon.startsWith(COVER_SCHEME)) {
+            String hash = icon.substring(COVER_SCHEME.length());
+            String url = String.format(Locale.getDefault(), COVER_REQUEST_HASH, hash);
             loadUrlRoundIcon(context, iv, url, radius);
         } else if (icon.startsWith(FONTAWESOME_SCHEME)) {
             String url = icon.substring(FONTAWESOME_SCHEME.length());
@@ -219,7 +224,11 @@ public class IconLoader {
             loadMipmap(context, iv, icon);
         } else if (icon.startsWith(AVATAR_SCHEME)) {
             String hash = icon.substring(AVATAR_SCHEME.length());
-            String url = String.format(Locale.getDefault(), IMAGE_REQUEST_HASH, hash);
+            String url = String.format(Locale.getDefault(), AVATAR_REQUEST_HASH, hash);
+            loadUrlRoundIcon(context, iv, url, radius);
+        } else if (icon.startsWith(COVER_SCHEME)) {
+            String hash = icon.substring(COVER_SCHEME.length());
+            String url = String.format(Locale.getDefault(), COVER_REQUEST_HASH, hash);
             loadUrlRoundIcon(context, iv, url, radius);
         } else if (icon.startsWith(FONTAWESOME_SCHEME)) {
             String url = icon.substring(FONTAWESOME_SCHEME.length());
@@ -381,6 +390,18 @@ public class IconLoader {
         return AVATAR_SCHEME + md5(seed);
     }
 
+    public static String randomCover(String seed) {
+        return COVER_SCHEME + md5(seed);
+    }
+
+    public static String randomAvatar() {
+        return randomAvatar(UUID.randomUUID().toString());
+    }
+
+    public static String randomCover() {
+        return randomCover(UUID.randomUUID().toString());
+    }
+
     public static String md5(final String s) {
         try {
             // Create MD5 Hash
@@ -406,7 +427,10 @@ public class IconLoader {
     //region schema
     //random avatar
     public static final String AVATAR_SCHEME = "avatar://";
-    public static final String IMAGE_REQUEST_HASH = "https://www.gravatar.com/avatar/%s?s=40&d=identicon";
+    public static final String AVATAR_REQUEST_HASH = "https://picsum.photos/seed/%s/64/64";
+    //random cover
+    public static final String COVER_SCHEME = "cover://";
+    public static final String COVER_REQUEST_HASH = "https://picsum.photos/seed/%s/1600/900";
 
     //fontawesome
     public static final String FONTAWESOME_SCHEME = "fontawesome://";

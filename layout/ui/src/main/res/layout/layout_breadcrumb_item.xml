@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
     android:layout_height="match_parent"
-    android:paddingStart="4dp"
-    android:paddingEnd="4dp"
     android:background="?attr/selectableItemBackgroundBorderless"
     android:gravity="center_vertical"
-    android:orientation="horizontal">
+    android:orientation="horizontal"
+    android:paddingStart="4dp"
+    android:paddingEnd="4dp">
 
     <TextView
         android:id="@+id/textText"
@@ -17,6 +16,7 @@
         android:duplicateParentState="true"
         android:ellipsize="end"
         android:maxLines="1"
+        android:textAllCaps="false"
         android:textAppearance="@style/TextAppearance.Design.Tab" />
 
     <ImageView

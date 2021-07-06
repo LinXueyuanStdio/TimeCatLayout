@@ -3,6 +3,7 @@ package com.timecat.layout.ui.business.breadcrumb
 import android.annotation.SuppressLint
 import android.content.Context
 import android.content.res.ColorStateList
+import android.os.Parcelable
 import android.util.AttributeSet
 import androidx.annotation.AttrRes
 import androidx.annotation.DimenRes
@@ -10,6 +11,7 @@ import androidx.annotation.StyleRes
 import androidx.annotation.StyleableRes
 import androidx.appcompat.view.ContextThemeWrapper
 import androidx.appcompat.widget.TintTypedArray
+import kotlinx.android.parcel.Parcelize
 import kotlin.contracts.ExperimentalContracts
 import kotlin.contracts.InvocationKind
 import kotlin.contracts.contract
@@ -21,6 +23,7 @@ import kotlin.contracts.contract
  * @description null
  * @usage null
  */
+@Parcelize
 data class Path(
     var name: String,
     var uuid: String = "",
@@ -28,7 +31,7 @@ data class Path(
     var isArchivePath: Boolean = false,
     var archiveFile: Path? = null,
     var parent: Path? = null
-) {
+) : Parcelable {
     companion object {
         @JvmStatic
         fun ofRoot(): Path = Path("时光猫")

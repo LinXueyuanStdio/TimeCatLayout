@@ -18,7 +18,7 @@ import androidx.core.view.ViewCompat
 import com.timecat.layout.ui.R
 import java.util.*
 
-class BottomBar @JvmOverloads constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0) :
+open class BottomBar @JvmOverloads constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0) :
     LinearLayout(context, attrs, defStyleAttr) {
     private val mInterpolator: Interpolator = AccelerateDecelerateInterpolator()
     var isVisible = true
@@ -221,6 +221,7 @@ class BottomBar @JvmOverloads constructor(context: Context, attrs: AttributeSet?
         }
 
         companion object {
+            @JvmField
             val CREATOR: Parcelable.Creator<SavedState> = object : Parcelable.Creator<SavedState> {
                 override fun createFromParcel(`in`: Parcel): SavedState? {
                     return SavedState(`in`)

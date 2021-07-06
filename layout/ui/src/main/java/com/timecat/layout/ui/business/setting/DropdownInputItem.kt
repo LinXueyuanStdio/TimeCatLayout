@@ -6,6 +6,7 @@ import android.view.View
 import android.widget.AdapterView
 import com.google.android.material.textfield.MaterialAutoCompleteTextView
 import com.google.android.material.textfield.TextInputLayout
+import com.timecat.component.identity.Attr
 import com.timecat.layout.ui.R
 import com.timecat.layout.ui.standard.materialspinner.SpinnerAdapter
 
@@ -52,7 +53,9 @@ class DropdownInputItem<T> @JvmOverloads constructor(
     var items: List<T>
         get() = adapter.items ?: listOf()
         set(value) {
-            adapter = SpinnerAdapter(context, value)
+            val a = SpinnerAdapter(context, value)
+            a.setTextColor(Attr.getPrimaryTextColor(context))
+            adapter = a
             autoCompleteTextView.setText(items[0].toString(), false)
             autoCompleteTextView.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
                 override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
