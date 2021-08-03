@@ -13,6 +13,7 @@ import androidx.appcompat.widget.PopupMenu
 import androidx.core.view.isVisible
 import com.timecat.layout.ui.R
 import com.timecat.layout.ui.databinding.LayoutBreadcrumbItemBinding
+import com.timecat.layout.ui.layout.setShakelessClickListener
 
 /**
  * @author 林学渊
@@ -139,15 +140,10 @@ class BreadcrumbLayout : HorizontalScrollView {
         }
         for (index in itemsLayout.childCount until data.paths.size) {
             val binding = LayoutBreadcrumbItemBinding.inflate(LayoutInflater.from(context), itemsLayout, false)
-            val menu = PopupMenu(popupContext, binding.root)
-                .apply { inflate(R.menu.breadcrumb) }
-            binding.root.setOnLongClickListener {
-                menu.show()
-                true
-            }
             binding.textText.setTextColor(itemColor)
+            binding.textText.isAllCaps = false
             binding.arrowImage.imageTintList = itemColor
-            binding.root.tag = binding to menu
+            binding.root.tag = binding
             itemsLayout.addView(binding.root, 0)
         }
     }
@@ -155,38 +151,47 @@ class BreadcrumbLayout : HorizontalScrollView {
     private fun bindItemViews() {
         for (index in data.paths.indices) {
             @Suppress("UNCHECKED_CAST")
-            val tag = itemsLayout.getChildAt(index).tag as Pair<LayoutBreadcrumbItemBinding, PopupMenu>
-            val (binding, menu) = tag
+            val binding = itemsLayout.getChildAt(index).tag as? LayoutBreadcrumbItemBinding ?: return
             binding.textText.text = data.nameProducers[index](binding.textText.context)
             binding.arrowImage.isVisible = index != data.paths.size - 1
             binding.root.isActivated = index == data.selectedIndex
             val path = data.paths[index]
-            binding.root.setOnClickListener {
+            binding.root.setShakelessClickListener {
                 if (data.selectedIndex == index) {
                     scrollToSelectedItem()
                 } else {
                     listener.navigateTo(path)
                 }
             }
-            menu.setOnMenuItemClickListener {
-                when (it.itemId) {
-                    R.id.action_copy_path -> {
-                        listener.copyPath(path)
-                        true
-                    }
-                    R.id.action_open_in_new_task -> {
-                        listener.openInNewTask(path)
-                        true
-                    }
-                    else -> false
-                }
+            binding.root.setOnLongClickListener {
+                listener.showMenu(popupContext, binding.root, path)
+                true
             }
         }
     }
 
     interface Listener {
         fun navigateTo(path: Path)
-        fun copyPath(path: Path)
-        fun openInNewTask(path: Path)
+        fun copyPath(path: Path) {}
+        fun openInNewTask(path: Path) {}
+        fun showMenu(context: Context, anchor: View, path: Path) {
+            val menu = PopupMenu(context, anchor).apply {
+                inflate(R.menu.breadcrumb)
+            }
+            menu.setOnMenuItemClickListener {
+                when (it.itemId) {
+                    R.id.action_copy_path -> {
+                        copyPath(path)
+                        true
+                    }
+                    R.id.action_open_in_new_task -> {
+                        openInNewTask(path)
+                        true
+                    }
+                    else -> false
+                }
+            }
+            menu.show()
+        }
     }
 }
