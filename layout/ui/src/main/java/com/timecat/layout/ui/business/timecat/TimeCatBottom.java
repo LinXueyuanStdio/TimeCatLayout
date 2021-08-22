@@ -1,4 +1,5 @@
 package com.timecat.layout.ui.business.timecat;
+
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.graphics.Canvas;
@@ -10,6 +11,7 @@ import android.widget.ImageView;
 
 import com.timecat.layout.ui.R;
 import com.timecat.layout.ui.utils.ViewUtil;
+
 public class TimeCatBottom extends ViewGroup implements View.OnClickListener {
 
     ImageView mDragSelect;

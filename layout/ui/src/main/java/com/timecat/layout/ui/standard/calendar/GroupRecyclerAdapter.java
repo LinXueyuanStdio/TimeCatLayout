@@ -45,10 +45,8 @@ public abstract class GroupRecyclerAdapter<Parent, Child> extends BaseRecyclerAd
      * @return 某一组的数量
      */
     public int getChildCount(int groupPosition) {
-        if (mGroupTitles == null || mGroups.size() == 0)
-            return 0;
-        if (mGroups.get(mGroupTitles.get(groupPosition)) == null)
-            return 0;
+        if (mGroupTitles == null || mGroups.size() == 0) { return 0; }
+        if (mGroups.get(mGroupTitles.get(groupPosition)) == null) { return 0; }
         return mGroups.get(mGroupTitles.get(groupPosition)).size();
     }
 
@@ -108,8 +106,7 @@ public abstract class GroupRecyclerAdapter<Parent, Child> extends BaseRecyclerAd
      */
     private int getGroupIndex(int position) {
         int count = 0;
-        if (position <= count)
-            return 0;
+        if (position <= count) { return 0; }
         int i = 0;
         for (Parent parent : mGroups.keySet()) {
             count += mGroups.get(parent).size();
@@ -122,8 +119,7 @@ public abstract class GroupRecyclerAdapter<Parent, Child> extends BaseRecyclerAd
     }
 
     private void removeGroupChildren(int groupPosition) {
-        if (groupPosition >= mGroupTitles.size())
-            return;
+        if (groupPosition >= mGroupTitles.size()) { return; }
         List<Child> childList = mGroups.get(mGroupTitles.get(groupPosition));
         if (childList != null && childList.size() != 0) {
             childList.remove(childList.size() - 1);

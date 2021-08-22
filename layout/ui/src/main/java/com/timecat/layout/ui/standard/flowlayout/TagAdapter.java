@@ -65,8 +65,7 @@ public abstract class TagAdapter<T> {
     }
 
     public void notifyDataChanged() {
-        if (mOnDataChangedListener != null)
-            mOnDataChangedListener.onChanged();
+        if (mOnDataChangedListener != null) { mOnDataChangedListener.onChanged(); }
     }
 
     public T getItem(int position) {

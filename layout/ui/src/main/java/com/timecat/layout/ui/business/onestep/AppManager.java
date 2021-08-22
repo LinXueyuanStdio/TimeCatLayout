@@ -365,7 +365,8 @@ public class AppManager extends DataManager {
                         } else {
                             getWritableDatabase().delete(TABLE_APPS, "packagename=? and componentname=?", new String[]{pkgName, componentName});
                         }
-                    } while (cursor.moveToNext());
+                    }
+                    while (cursor.moveToNext());
                 }
             } catch (Exception e) {
                 e.printStackTrace();

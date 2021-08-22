@@ -16,10 +16,10 @@ import android.renderscript.ScriptIntrinsicBlur;
 import android.util.Base64;
 import android.widget.ImageView;
 
+import java.io.ByteArrayOutputStream;
+
 import androidx.core.content.ContextCompat;
 import androidx.core.graphics.drawable.DrawableCompat;
-
-import java.io.ByteArrayOutputStream;
 
 /**
  * Created by hcc on 2016/10/2 00:05
@@ -162,7 +162,7 @@ public class ImageUtil {
 
     public static void startSwitchBackgroundAnim(ImageView view, Bitmap bitmap) {
         Drawable oldDrawable = view.getDrawable();
-        Drawable oldBitmapDrawable ;
+        Drawable oldBitmapDrawable;
         TransitionDrawable oldTransitionDrawable = null;
         if (oldDrawable instanceof TransitionDrawable) {
             oldTransitionDrawable = (TransitionDrawable) oldDrawable;

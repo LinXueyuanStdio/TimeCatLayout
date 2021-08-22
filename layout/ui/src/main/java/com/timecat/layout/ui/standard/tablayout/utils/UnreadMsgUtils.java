@@ -81,6 +81,7 @@ public class UnreadMsgUtils {
 
         }
     }
+
     public static void setSize(MsgView rtv, int size) {
         if (rtv == null) {
             return;

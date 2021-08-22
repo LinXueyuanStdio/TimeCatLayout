@@ -13,10 +13,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
-import androidx.core.content.ContextCompat;
-
 import com.timecat.layout.ui.R;
 import com.timecat.layout.ui.utils.ViewUtil;
+
+import androidx.core.content.ContextCompat;
+
 public class TimeCatHeader extends ViewGroup implements View.OnClickListener {
 
     ImageView mSearch;
@@ -136,7 +137,7 @@ public class TimeCatHeader extends ViewGroup implements View.OnClickListener {
         if (!stickHeader && !oldBounds.equals(newBounds)) {
             ObjectAnimator.ofObject(new BoundWrapper(oldBounds),
                     "bound", new RectEvaluator(), oldBounds, newBounds)
-                    .setDuration(200).start();
+                          .setDuration(200).start();
         }
     }
 

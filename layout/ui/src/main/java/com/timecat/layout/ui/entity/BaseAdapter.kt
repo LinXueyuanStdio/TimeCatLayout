@@ -19,7 +19,7 @@ open class BaseAdapter : FlexibleAdapter<BaseItem<*>> {
     constructor(items: MutableList<BaseItem<*>>?) : super(items)
     constructor(items: MutableList<BaseItem<*>>?, listeners: Any?) : super(items, listeners)
     constructor(items: MutableList<BaseItem<*>>?, listeners: Any?, stableIds: Boolean)
-            : super(items, listeners, stableIds)
+        : super(items, listeners, stableIds)
 
     override fun onCreateBubbleText(position: Int): String {
         var pos = position
@@ -93,8 +93,9 @@ open class BaseAdapter : FlexibleAdapter<BaseItem<*>> {
     fun bindViewHolderAnimation(holder: FlexibleViewHolder) {
         holder.itemView.clearAnimation()
         if (isAnimating) {
-            val animation = AnimationUtils.loadAnimation(holder.itemView.context, R.anim.item_on_load)
-                .apply { startOffset = animationStartOffset.toLong() }
+            val animation =
+                AnimationUtils.loadAnimation(holder.itemView.context, R.anim.item_on_load)
+                    .apply { startOffset = animationStartOffset.toLong() }
             animationStartOffset += ANIMATION_STAGGER_MILLIS
             holder.itemView.startAnimation(animation)
             postStopAnimation()

@@ -3,6 +3,7 @@ package com.timecat.layout.ui.standard.viewpaper;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
+
 import androidx.fragment.app.FragmentStatePagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
@@ -75,10 +76,10 @@ public class CustomViewPager extends ViewPager {
      */
     public void setCustomViewPagerParam(int offscreenPageLimit, boolean enable, FragmentStatePagerAdapter adapter, ViewPager.OnPageChangeListener onPageChangeListener, int currentItem) {
         this.setCustomOffscreenPageLimit(offscreenPageLimit)
-                .setViewPagerEnabled(enable)
-                .setCustomAdapter(adapter)
-                .setCustomOnPageChangeListener(onPageChangeListener)
-                .setCustomCurrentItem(currentItem);
+            .setViewPagerEnabled(enable)
+            .setCustomAdapter(adapter)
+            .setCustomOnPageChangeListener(onPageChangeListener)
+            .setCustomCurrentItem(currentItem);
     }
 
 

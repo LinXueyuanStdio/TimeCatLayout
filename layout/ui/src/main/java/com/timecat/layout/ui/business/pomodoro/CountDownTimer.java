@@ -1,10 +1,12 @@
 package com.timecat.layout.ui.business.pomodoro;
+
 import android.os.Handler;
 import android.os.Message;
 import android.os.SystemClock;
 
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
+
 public class CountDownTimer {
 
     public interface OnCountDownTickListener {
@@ -13,6 +15,7 @@ public class CountDownTimer {
          * CountDownTimer 更改时触发的事件
          */
         void onCountDownTick(long millisUntilFinished);
+
         /**
          * CountDownTimer 完成时触发的事件
          */
@@ -149,7 +152,7 @@ public class CountDownTimer {
 
                         // special case: user's onTick took more than interval to
                         // complete, skip to next interval
-                        while (delay < 0) delay += mCountdownInterval;
+                        while (delay < 0) { delay += mCountdownInterval; }
 
                         sendMessageDelayed(obtainMessage(MSG), delay);
                     }

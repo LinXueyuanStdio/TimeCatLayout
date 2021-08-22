@@ -58,11 +58,10 @@ public class GroupRecyclerView extends RecyclerView {
 
     @Override
     public void addItemDecoration(ItemDecoration decor) {
-        if (decor instanceof GroupItemDecoration)
-            super.addItemDecoration(decor);
-        else
+        if (decor instanceof GroupItemDecoration) { super.addItemDecoration(decor); } else {
             throw new IllegalStateException("ItemDecoration must instanceof " +
                     "GroupItemDecoration or extends GroupItemDecoration");
+        }
         mItemDecoration = (GroupItemDecoration) decor;
         mItemDecoration.setTextSize(mTextSize);
         mItemDecoration.setBackground(mGroutBackground);

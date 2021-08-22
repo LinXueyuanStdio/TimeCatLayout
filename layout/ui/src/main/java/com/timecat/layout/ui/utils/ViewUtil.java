@@ -25,12 +25,12 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import androidx.core.graphics.drawable.DrawableCompat;
-
 import com.timecat.extend.arms.BaseApplication;
 
 import java.lang.reflect.Method;
 import java.util.concurrent.atomic.AtomicInteger;
+
+import androidx.core.graphics.drawable.DrawableCompat;
 
 public class ViewUtil {
 
@@ -43,24 +43,24 @@ public class ViewUtil {
                 final int result = sNextGeneratedId.get();
                 // aapt-generated IDs have the high byte nonzero; clamp to the range under that.
                 int newValue = result + 1;
-                if (newValue > 0x00FFFFFF) newValue = 1; // Roll over to 1, not 0.
-                if (sNextGeneratedId.compareAndSet(result, newValue)) return result;
+                if (newValue > 0x00FFFFFF) {
+                    newValue = 1; // Roll over to 1, not 0.
+                }
+                if (sNextGeneratedId.compareAndSet(result, newValue)) { return result; }
             }
-        } else return View.generateViewId();
+        } else { return View.generateViewId(); }
     }
 
     public static boolean hasState(int[] states, int state) {
-        if (states == null) return false;
+        if (states == null) { return false; }
 
-        for (int state1 : states)
-            if (state1 == state) return true;
+        for (int state1 : states) { if (state1 == state) { return true; } }
 
         return false;
     }
 
     public static void setBackground(View v, Drawable drawable) {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) v.setBackground(drawable);
-        else v.setBackgroundDrawable(drawable);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) { v.setBackground(drawable); } else { v.setBackgroundDrawable(drawable); }
     }
 
     public static int dp2px(float dp) {
@@ -93,15 +93,17 @@ public class ViewUtil {
     }
 
     public static int getRelativeTop(View myView) {
-//	    if (myView.getParent() == myView.getRootView())
-        if (myView.getId() == android.R.id.content) return myView.getTop();
-        else return myView.getTop() + getRelativeTop((View) myView.getParent());
+        //	    if (myView.getParent() == myView.getRootView())
+        if (myView.getId() == android.R.id.content) { return myView.getTop(); } else {
+            return myView.getTop() + getRelativeTop((View) myView.getParent());
+        }
     }
 
     public static int getRelativeLeft(View myView) {
-//	    if (myView.getParent() == myView.getRootView())
-        if (myView.getId() == android.R.id.content) return myView.getLeft();
-        else return myView.getLeft() + getRelativeLeft((View) myView.getParent());
+        //	    if (myView.getParent() == myView.getRootView())
+        if (myView.getId() == android.R.id.content) { return myView.getLeft(); } else {
+            return myView.getLeft() + getRelativeLeft((View) myView.getParent());
+        }
     }
 
     public static void hideInputMethod(View view) {
@@ -208,23 +210,28 @@ public class ViewUtil {
     private static final Rect sOldBounds = new Rect();
     private static final Canvas sCanvas = new Canvas();
     private static final int NUMBER_OF_PALETTE_COLORS = 24;
+
     static {
         sCanvas.setDrawFilter(new PaintFlagsDrawFilter(Paint.DITHER_FLAG,
                 Paint.FILTER_BITMAP_FLAG));
     }
-    public static Point getScreenSize (Context context){
+
+    public static Point getScreenSize(Context context) {
         WindowManager manager = (WindowManager)
                 context.getApplicationContext().getSystemService(Context.WINDOW_SERVICE);
         Point point = new Point();
         manager.getDefaultDisplay().getRealSize(point);
         return point;
     }
-    public static int getScreenWidth(Context context){
+
+    public static int getScreenWidth(Context context) {
         return getScreenSize(context).x;
     }
-    public static int getScreenHeight(Context context){
+
+    public static int getScreenHeight(Context context) {
         return getScreenSize(context).y;
     }
+
     // #ifdef LAVA_EDIT
     // wangxijun. 2016/10/11, NavigationBar
     public static int getNavigationBarHeight(Context context) {
@@ -251,7 +258,7 @@ public class ViewUtil {
             int resourceId = context.getResources().getIdentifier("navigation_bar_height", "dimen", "android");
             height = context.getResources().getDimensionPixelSize(resourceId);
         }
-        return  height;
+        return height;
     }
 
 
@@ -260,11 +267,12 @@ public class ViewUtil {
         DrawableCompat.setTint(wrappedDrawable, colors);
         return wrappedDrawable;
     }
+
     /**
      * Returns a bitmap suitable for the all apps view.
      */
     public static Bitmap createIconBitmap(Drawable icon, int size) {
-        if(icon == null){
+        if (icon == null) {
             return null;
         }
         synchronized (sCanvas) {
@@ -273,7 +281,7 @@ public class ViewUtil {
             int h = icon.getIntrinsicHeight();
             // 取 drawable 的颜色格式
             Bitmap.Config config = icon.getOpacity() != PixelFormat.OPAQUE ? Bitmap.Config.ARGB_8888
-                    : Bitmap.Config.RGB_565;
+                                                                           : Bitmap.Config.RGB_565;
             // 建立对应 bitmap
             Bitmap bitmap = Bitmap.createBitmap(w, h, config);
             // 建立对应 bitmap 的画布
@@ -281,23 +289,24 @@ public class ViewUtil {
             icon.setBounds(0, 0, w, h);
             // 把 drawable 内容画到画布中
             icon.draw(canvas);
-            Bitmap scaleBmp = Bitmap.createScaledBitmap(bitmap,size,size,true);
-            if(bitmap != null){
-                if (!bitmap.isRecycled()){
+            Bitmap scaleBmp = Bitmap.createScaledBitmap(bitmap, size, size, true);
+            if (bitmap != null) {
+                if (!bitmap.isRecycled()) {
                     bitmap.recycle();
                 }
             }
             return scaleBmp;
         }
     }
-    public static Bitmap drawable2Bitmap(Drawable drawable){
+
+    public static Bitmap drawable2Bitmap(Drawable drawable) {
         synchronized (sCanvas) {
             // 取 drawable 的长宽
             int w = drawable.getIntrinsicWidth();
             int h = drawable.getIntrinsicHeight();
             // 取 drawable 的颜色格式
             Bitmap.Config config = drawable.getOpacity() != PixelFormat.OPAQUE ? Bitmap.Config.ARGB_8888
-                    : Bitmap.Config.RGB_565;
+                                                                               : Bitmap.Config.RGB_565;
             // 建立对应 bitmap
             Bitmap bitmap = Bitmap.createBitmap(w, h, config);
             // 建立对应 bitmap 的画布
@@ -305,9 +314,9 @@ public class ViewUtil {
             drawable.setBounds(0, 0, w, h);
             // 把 drawable 内容画到画布中
             drawable.draw(canvas);
-            Bitmap scaleBmp = Bitmap.createScaledBitmap(bitmap,w,h,true);
-            if(bitmap != null){
-                if (!bitmap.isRecycled()){
+            Bitmap scaleBmp = Bitmap.createScaledBitmap(bitmap, w, h, true);
+            if (bitmap != null) {
+                if (!bitmap.isRecycled()) {
                     bitmap.recycle();
                 }
             }

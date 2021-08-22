@@ -196,12 +196,15 @@ public class CustomMonthView extends MonthView implements SkinEnable {
         final float scale = context.getResources().getDisplayMetrics().density;
         return (int) (dpValue * scale + 0.5f);
     }
+
     private int getSpecialColor() {
         return Attr.getAccentColor(getContext());
     }
+
     private int getPrimaryTextColor() {
         return Attr.getPrimaryTextColor(getContext());
     }
+
     private int getSecondaryTextColor() {
         return Attr.getSecondaryTextColor(getContext());
     }

@@ -35,11 +35,11 @@ public class LinkageHorizontalScrollView extends HorizontalScrollView {
         super.onScrollChanged(l, t, oldl, oldt);
 
         if (onLinkageListener != null) {
-            onLinkageListener.onLinkageScroll(this, l,  t, oldl, oldt);
+            onLinkageListener.onLinkageScroll(this, l, t, oldl, oldt);
         }
     }
 
-    public interface OnLinkageListener{
+    public interface OnLinkageListener {
         void onLinkageScroll(HorizontalScrollView scrollView, int l, int t, int oldl, int oldt);
     }
 }

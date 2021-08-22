@@ -21,14 +21,13 @@ public abstract class BaseRecyclerAdapter<T> extends RecyclerView.Adapter {
     private OnItemClickListener onItemClickListener;
     private OnClickListener onClickListener;
 
-   public BaseRecyclerAdapter(Context context) {
+    public BaseRecyclerAdapter(Context context) {
         this.mItems = new ArrayList<>();
         mInflater = LayoutInflater.from(context);
         onClickListener = new OnClickListener() {
             @Override
             public void onClick(int position, long itemId) {
-                if (onItemClickListener != null)
-                    onItemClickListener.onItemClick(position, itemId);
+                if (onItemClickListener != null) { onItemClickListener.onItemClick(position, itemId); }
             }
         };
 
@@ -82,8 +81,7 @@ public abstract class BaseRecyclerAdapter<T> extends RecyclerView.Adapter {
 
 
     final T getItem(int position) {
-        if (position < 0 || position >= mItems.size())
-            return null;
+        if (position < 0 || position >= mItems.size()) { return null; }
         return mItems.get(position);
     }
 
@@ -117,7 +115,7 @@ public abstract class BaseRecyclerAdapter<T> extends RecyclerView.Adapter {
         }
     }
 
-    protected final void clear(){
+    protected final void clear() {
         mItems.clear();
         notifyDataSetChanged();
     }

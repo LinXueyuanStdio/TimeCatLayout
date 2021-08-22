@@ -27,14 +27,14 @@ import android.widget.AdapterView;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
-
 import com.timecat.layout.ui.R;
 import com.timecat.layout.ui.utils.ScreenUtil;
 import com.timecat.layout.ui.utils.ViewUtil;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import androidx.annotation.NonNull;
 
 
 /**
@@ -284,7 +284,7 @@ public class BGANinePhotoLayout extends FrameLayout implements AdapterView.OnIte
         @Override
         public int getCount() {
             return mIsExpand || mData.size() <= mMaxItemDisplayedBeforeExpand ?
-                    super.getCount() : mData.subList(0, mMaxItemDisplayedBeforeExpand).size();
+                   super.getCount() : mData.subList(0, mMaxItemDisplayedBeforeExpand).size();
         }
 
         private void displayExpandMaskIfNeed(BGAViewHolderHelper helper, int position) {
@@ -308,15 +308,15 @@ public class BGANinePhotoLayout extends FrameLayout implements AdapterView.OnIte
 
     public interface Delegate {
         void onClickNinePhotoItem(@NonNull BGANinePhotoLayout ninePhotoLayout,
-                                  @NonNull View view,
-                                  int position,
-                                  @NonNull String model,
-                                  @NonNull List<String> models);
+                @NonNull View view,
+                int position,
+                @NonNull String model,
+                @NonNull List<String> models);
 
         void onClickExpand(@NonNull BGANinePhotoLayout ninePhotoLayout,
-                           @NonNull View view,
-                           int position,
-                           @NonNull String model,
-                           @NonNull List<String> models);
+                @NonNull View view,
+                int position,
+                @NonNull String model,
+                @NonNull List<String> models);
     }
 }

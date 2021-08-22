@@ -117,8 +117,7 @@ public class GroupItemDecoration<Group, Child> extends RecyclerView.ItemDecorati
             return;
         }
         Group group = getCroup(firstVisiblePosition);
-        if (group == null)
-            return;
+        if (group == null) { return; }
         String groupTitle = group.toString();
         if (TextUtils.isEmpty(groupTitle)) {
             return;
@@ -207,7 +206,7 @@ public class GroupItemDecoration<Group, Child> extends RecyclerView.ItemDecorati
      */
     public void notifyDataSetChanged(GroupRecyclerAdapter<Group, Child> adapter) {
         mGroup.clear();
-        if (adapter == null) return;
+        if (adapter == null) { return; }
         int key = 0;
         for (int i = 0; i < adapter.getGroupCount(); i++) {
             if (i == 0) {
@@ -221,7 +220,7 @@ public class GroupItemDecoration<Group, Child> extends RecyclerView.ItemDecorati
         }
     }
 
-    public void setChildItemOffset(int childItemOffset){
+    public void setChildItemOffset(int childItemOffset) {
         this.mChildItemOffset = childItemOffset;
     }
 

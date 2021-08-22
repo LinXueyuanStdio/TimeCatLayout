@@ -14,11 +14,14 @@ import android.view.animation.AnimationUtils
 import android.view.animation.Interpolator
 import android.widget.HorizontalScrollView
 import android.widget.LinearLayout
-import androidx.core.view.ViewCompat
 import com.timecat.layout.ui.R
 import java.util.*
 
-open class BottomBar @JvmOverloads constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0) :
+open class BottomBar @JvmOverloads constructor(
+    context: Context,
+    attrs: AttributeSet? = null,
+    defStyleAttr: Int = 0
+) :
     LinearLayout(context, attrs, defStyleAttr) {
     private val mInterpolator: Interpolator = AccelerateDecelerateInterpolator()
     var isVisible = true
@@ -272,7 +275,7 @@ open class BottomBar @JvmOverloads constructor(context: Context, attrs: Attribut
                     .setDuration(TRANSLATE_DURATION_MILLIS.toLong())
                     .translationY(translationY.toFloat())
             } else {
-                ViewCompat.setTranslationY(this, translationY.toFloat())
+                setTranslationY(translationY.toFloat())
             }
         }
     }

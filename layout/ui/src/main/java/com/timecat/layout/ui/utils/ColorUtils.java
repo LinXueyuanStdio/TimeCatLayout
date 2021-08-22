@@ -2,10 +2,10 @@ package com.timecat.layout.ui.utils;
 
 import android.graphics.Color;
 
+import java.util.Random;
+
 import androidx.annotation.ColorInt;
 import androidx.annotation.IntRange;
-
-import java.util.Random;
 
 public abstract class ColorUtils {
 

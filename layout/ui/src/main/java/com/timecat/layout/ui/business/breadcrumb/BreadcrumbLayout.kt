@@ -6,13 +6,14 @@ import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.HorizontalScrollView
+import android.widget.ImageView
 import android.widget.LinearLayout
+import android.widget.TextView
 import androidx.annotation.AttrRes
 import androidx.annotation.StyleRes
 import androidx.appcompat.widget.PopupMenu
 import androidx.core.view.isVisible
 import com.timecat.layout.ui.R
-import com.timecat.layout.ui.databinding.LayoutBreadcrumbItemBinding
 import com.timecat.layout.ui.layout.setShakelessClickListener
 
 /**
@@ -139,32 +140,39 @@ class BreadcrumbLayout : HorizontalScrollView {
             itemsLayout.removeViewAt(0)
         }
         for (index in itemsLayout.childCount until data.paths.size) {
-            val binding = LayoutBreadcrumbItemBinding.inflate(LayoutInflater.from(context), itemsLayout, false)
-            binding.textText.setTextColor(itemColor)
-            binding.textText.isAllCaps = false
-            binding.arrowImage.imageTintList = itemColor
-            binding.root.tag = binding
-            itemsLayout.addView(binding.root, 0)
+            val view = LayoutInflater.from(context)
+                .inflate(R.layout.layout_breadcrumb_item, itemsLayout, false)
+            val textText: TextView = view.findViewById(R.id.textText)
+            val arrowImage: ImageView = view.findViewById(R.id.arrowImage)
+
+            textText.setTextColor(itemColor)
+            textText.isAllCaps = false
+            arrowImage.imageTintList = itemColor
+            view.tag = view
+            itemsLayout.addView(view, 0)
         }
     }
 
     private fun bindItemViews() {
         for (index in data.paths.indices) {
             @Suppress("UNCHECKED_CAST")
-            val binding = itemsLayout.getChildAt(index).tag as? LayoutBreadcrumbItemBinding ?: return
-            binding.textText.text = data.nameProducers[index](binding.textText.context)
-            binding.arrowImage.isVisible = index != data.paths.size - 1
-            binding.root.isActivated = index == data.selectedIndex
+            val root = itemsLayout.getChildAt(index).tag as? View ?: return
+            val textText: TextView = root.findViewById(R.id.textText)
+            val arrowImage: ImageView = root.findViewById(R.id.arrowImage)
+
+            textText.text = data.nameProducers[index](textText.context)
+            arrowImage.isVisible = index != data.paths.size - 1
+            root.isActivated = index == data.selectedIndex
             val path = data.paths[index]
-            binding.root.setShakelessClickListener {
+            root.setShakelessClickListener {
                 if (data.selectedIndex == index) {
                     scrollToSelectedItem()
                 } else {
                     listener.navigateTo(path)
                 }
             }
-            binding.root.setOnLongClickListener {
-                listener.showMenu(popupContext, binding.root, path)
+            root.setOnLongClickListener {
+                listener.showMenu(popupContext, root, path)
                 true
             }
         }

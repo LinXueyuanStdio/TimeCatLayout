@@ -1,4 +1,5 @@
 package com.timecat.layout.ui.business.cropper;
+
 import android.annotation.SuppressLint;
 import android.content.ContentUris;
 import android.content.Context;
@@ -168,7 +169,7 @@ public class CropFileUtils {
                 return cursor.getString(column_index);
             }
         } finally {
-            if (cursor != null) cursor.close();
+            if (cursor != null) { cursor.close(); }
         }
         return null;
     }
@@ -206,12 +207,11 @@ public class CropFileUtils {
         Bitmap bitmap = CropImage.toOvalBitmap(BitmapFactory.decodeFile(path));
 
         try {
-            if (!BaseApplication.getContext().getFilesDir().exists())
-                BaseApplication.getContext().getFilesDir().mkdirs();
-//            if (!destFile.exists()) {
-//                boolean result = destFile.createNewFile();
-//                Log.d(TAG, "create new file result: " + result + " file : " + floatviewImagePath);
-//            }
+            if (!BaseApplication.getContext().getFilesDir().exists()) { BaseApplication.getContext().getFilesDir().mkdirs(); }
+            //            if (!destFile.exists()) {
+            //                boolean result = destFile.createNewFile();
+            //                Log.d(TAG, "create new file result: " + result + " file : " + floatviewImagePath);
+            //            }
             FileOutputStream out = new FileOutputStream(destFile);
             bitmap.compress(Bitmap.CompressFormat.PNG, 90, out);
             out.flush();

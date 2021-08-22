@@ -22,7 +22,7 @@ public class TabBlockItem {
     }
 
     public TabBlockItem(Long id, String title, String imagePath,
-                        String fragmentRouterPath, String actionRouterPath) {
+            String fragmentRouterPath, String actionRouterPath) {
         this.id = id;
         this.title = title;
         this.imagePath = imagePath;
@@ -31,7 +31,7 @@ public class TabBlockItem {
     }
 
     public BottomBarIvTextTab createTabView(Context context) {
-        BottomBarIvTextTab item =new BottomBarIvTextTab(context, imagePath, title);
+        BottomBarIvTextTab item = new BottomBarIvTextTab(context, imagePath, title);
         item.setItem(this);
         return item;
     }

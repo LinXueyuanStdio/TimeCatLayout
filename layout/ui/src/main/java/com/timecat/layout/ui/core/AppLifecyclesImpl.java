@@ -18,10 +18,10 @@ package com.timecat.layout.ui.core;
 import android.app.Application;
 import android.content.Context;
 
-import androidx.annotation.NonNull;
-
 import com.coorchice.library.ImageEngine;
 import com.jess.arms.base.delegate.AppLifecycles;
+
+import androidx.annotation.NonNull;
 
 /**
  * ================================================

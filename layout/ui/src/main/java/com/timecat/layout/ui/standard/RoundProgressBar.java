@@ -143,16 +143,16 @@ public class RoundProgressBar extends View {
 
             } else if (attr == R.styleable.RoundProgressBar_inner_text_start) {
                 innerTextStart = typedArray.getString(attr);
-                if (innerTextStart == null) innerTextStart = "开始";
+                if (innerTextStart == null) { innerTextStart = "开始"; }
                 progressDesc = innerTextStart;
 
             } else if (attr == R.styleable.RoundProgressBar_inner_text_end) {
                 innerTextEnd = typedArray.getString(attr);
-                if (innerTextEnd == null) innerTextEnd = "时间到";
+                if (innerTextEnd == null) { innerTextEnd = "时间到"; }
 
             } else if (attr == R.styleable.RoundProgressBar_inner_text_time_style) {
                 innerTextTimeStyle = typedArray.getString(attr);
-                if (innerTextTimeStyle == null) innerTextTimeStyle = "mm:ss";
+                if (innerTextTimeStyle == null) { innerTextTimeStyle = "mm:ss"; }
 
             }
         }
@@ -203,11 +203,11 @@ public class RoundProgressBar extends View {
         mShadowLayerSize = viewSize * SHADOW_LAYER_LARGE_SCALE;
 
         doughnutColors = new int[]{middleLayerProgressColor,
-                getResources().getColor(R.color.colorPrimary),
-                getResources().getColor(R.color.colorAccent),
-                getResources().getColor(R.color.textHighLightColor),
-                getResources().getColor(android.R.color.holo_green_light),
-                getResources().getColor(android.R.color.holo_purple)};
+                                   getResources().getColor(R.color.colorPrimary),
+                                   getResources().getColor(R.color.colorAccent),
+                                   getResources().getColor(R.color.textHighLightColor),
+                                   getResources().getColor(android.R.color.holo_green_light),
+                                   getResources().getColor(android.R.color.holo_purple)};
 
     }
 
@@ -228,12 +228,12 @@ public class RoundProgressBar extends View {
      */
     private void drawProgressText(String progressDesc, Canvas canvas) {
         Point textPointInView = getTextPointInView(progressDesc);
-        if (null == textPointInView) return;
+        if (null == textPointInView) { return; }
         canvas.drawText(progressDesc, textPointInView.x, textPointInView.y, mTextDescPaint);
     }
 
     private Point getTextPointInView(String textDesc) {
-        if (null == textDesc) return null;
+        if (null == textDesc) { return null; }
         Point point = new Point();
         int textW = (viewSize - (int) mTextDescPaint.measureText(textDesc)) / 2;
         Paint.FontMetrics fm = mTextDescPaint.getFontMetrics();
@@ -399,90 +399,91 @@ public class RoundProgressBar extends View {
 
     private void startCountDownTaskByRxAndroid() {
         Observable.interval(0, 1, TimeUnit.SECONDS)
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Subscriber<Long>() {
-                    @Override
-                    public void onCompleted() {
-                        progressDesc = innerTextEnd;
-                        isCounting = false;
-                        setForceStop(false);
-                        countdownTime = -1;
-                        if (null != valA) valA.cancel();
-                        valA = null;
-                        if (null != onCountListener) onCountListener.countDownFinished();
-                        smallCirclePaint.setColor(getResources().getColor(android.R.color.transparent));
-                        smallCircleInnerPaint.setColor(getResources().getColor(android.R.color.transparent));
-                        postDelayed(new Runnable() {
-                            @Override
-                            public void run() {
-                                smallCirclePaint.setColor(getResources().getColor(smallCircleStrokeColor));
-                                smallCircleInnerPaint.setColor(getResources().getColor(smallCircleSlideColor));
-                                unsubscribe();
-                            }
-                        }, 100);
-                    }
+                  .subscribeOn(Schedulers.io())
+                  .observeOn(AndroidSchedulers.mainThread())
+                  .subscribe(new Subscriber<Long>() {
+                      @Override
+                      public void onCompleted() {
+                          progressDesc = innerTextEnd;
+                          isCounting = false;
+                          setForceStop(false);
+                          countdownTime = -1;
+                          if (null != valA) { valA.cancel(); }
+                          valA = null;
+                          if (null != onCountListener) { onCountListener.countDownFinished(); }
+                          smallCirclePaint.setColor(getResources().getColor(android.R.color.transparent));
+                          smallCircleInnerPaint.setColor(getResources().getColor(android.R.color.transparent));
+                          postDelayed(new Runnable() {
+                              @Override
+                              public void run() {
+                                  smallCirclePaint.setColor(getResources().getColor(smallCircleStrokeColor));
+                                  smallCircleInnerPaint.setColor(getResources().getColor(smallCircleSlideColor));
+                                  unsubscribe();
+                              }
+                          }, 100);
+                      }
 
-                    @Override
-                    public void onError(Throwable e) {
-                    }
+                      @Override
+                      public void onError(Throwable e) {
+                      }
 
-                    @Override
-                    public void onNext(Long aLong) {
-                        if (countdownTime < -1) {
-                            this.unsubscribe();
-                        }
-                        --countdownTime;
-                        if (countdownTime < 0) {
-                            onCompleted();
-                            return;
-                        } else {
-                            mTextDescPaint.setTextSize(innerTextSize);
-                            int hours = (countdownTime / (60 * 60)) & 24;
-                            int minutes = (countdownTime / 60) % 60;
-                            int seconds = (countdownTime % 60);
-                            String minutesStr = (minutes <= 9 && minutes > 0) ? "0" + minutes : (minutes == 0 ? "00" : minutes + "");
-                            String hoursStr = (hours <= 9 && hours > 0) ? "0" + hours : (hours == 0 ? "00" : hours + "");
-                            String secondsStr = (seconds <= 9 && seconds > 0) ? "0" + seconds : (seconds == 0 ? "00" : seconds + "");
-                            if (hours != 0 || "HH:mm:ss".equals(innerTextTimeStyle)) {
-                                progressDesc = hoursStr + ":" + minutesStr + ":" + secondsStr;
-                            } else if (minutes != 0 || "mm:ss".equals(innerTextTimeStyle)) {
-                                progressDesc = minutesStr + ":" + secondsStr;
-                            } else if (seconds != 0 || "ss".equals(innerTextTimeStyle)) {
-                                progressDesc = secondsStr;
-                            }
-                            if (null != onCountListener) {
-                                onCountListener.counting(countdownTime);
-                                if (isForceStop()) {
-                                    forceStop();
-                                } else {
-                                    isCounting = true;
-                                }
-                            }
-                        }
-                        invalidate();
-                    }
+                      @Override
+                      public void onNext(Long aLong) {
+                          if (countdownTime < -1) {
+                              this.unsubscribe();
+                          }
+                          --countdownTime;
+                          if (countdownTime < 0) {
+                              onCompleted();
+                              return;
+                          } else {
+                              mTextDescPaint.setTextSize(innerTextSize);
+                              int hours = (countdownTime / (60 * 60)) & 24;
+                              int minutes = (countdownTime / 60) % 60;
+                              int seconds = (countdownTime % 60);
+                              String minutesStr = (minutes <= 9 && minutes > 0) ? "0" + minutes : (minutes == 0 ? "00" : minutes + "");
+                              String hoursStr = (hours <= 9 && hours > 0) ? "0" + hours : (hours == 0 ? "00" : hours + "");
+                              String secondsStr = (seconds <= 9 && seconds > 0) ? "0" + seconds : (seconds == 0 ? "00" : seconds + "");
+                              if (hours != 0 || "HH:mm:ss".equals(innerTextTimeStyle)) {
+                                  progressDesc = hoursStr + ":" + minutesStr + ":" + secondsStr;
+                              } else if (minutes != 0 || "mm:ss".equals(innerTextTimeStyle)) {
+                                  progressDesc = minutesStr + ":" + secondsStr;
+                              } else if (seconds != 0 || "ss".equals(innerTextTimeStyle)) {
+                                  progressDesc = secondsStr;
+                              }
+                              if (null != onCountListener) {
+                                  onCountListener.counting(countdownTime);
+                                  if (isForceStop()) {
+                                      forceStop();
+                                  } else {
+                                      isCounting = true;
+                                  }
+                              }
+                          }
+                          invalidate();
+                      }
 
-                    private void forceStop() {
-                        isCounting = false;
-                        setForceStop(false);
-                        countdownTime = -1;
-                        if (null != valA) valA.cancel();
-                        valA = null;
-                        mTextDescPaint.setTextSize(innerTextSize);
-                        progressDesc = innerTextStart;
-                        postDelayed(new Runnable() {
-                            @Override
-                            public void run() {
-                                unsubscribe();
-                            }
-                        }, 100);
-                    }
-                });
+                      private void forceStop() {
+                          isCounting = false;
+                          setForceStop(false);
+                          countdownTime = -1;
+                          if (null != valA) { valA.cancel(); }
+                          valA = null;
+                          mTextDescPaint.setTextSize(innerTextSize);
+                          progressDesc = innerTextStart;
+                          postDelayed(new Runnable() {
+                              @Override
+                              public void run() {
+                                  unsubscribe();
+                              }
+                          }, 100);
+                      }
+                  });
     }
     //</editor-fold desc="业务">
 
     //<editor-fold desc="getter and setter">
+
     /**
      * 设置计时秒数
      * @param countdownTime 秒
@@ -685,7 +686,9 @@ public class RoundProgressBar extends View {
 
     public interface OnCountListener {
         void countDownFinished();
+
         void counting(int remainTime);
+
         void onCountingClick();
     }
     //endregion

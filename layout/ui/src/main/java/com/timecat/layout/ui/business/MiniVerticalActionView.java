@@ -11,17 +11,13 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
 
-import androidx.annotation.ColorInt;
-import androidx.annotation.IntDef;
-import androidx.annotation.NonNull;
-
 import com.github.florent37.viewtooltip.ViewTooltip;
 import com.github.florent37.viewtooltip.ViewTooltip.Position;
 import com.timecat.layout.ui.R;
 import com.timecat.layout.ui.utils.ViewUtil;
 
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
+import androidx.annotation.ColorInt;
+import androidx.annotation.NonNull;
 
 
 /**
@@ -33,9 +29,6 @@ import java.lang.annotation.RetentionPolicy;
  */
 public class MiniVerticalActionView extends LinearLayout {
 
-    public final static int VIEW_MODE = 0;
-    public final static int CREATE_MODE = 1;
-    public final static int EDIT_MODE = 2;
     public ScrollView scrollView;
     public ImageView iv_full_edit;
     public ImageView iv_copy;
@@ -70,7 +63,7 @@ public class MiniVerticalActionView extends LinearLayout {
 
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     public MiniVerticalActionView(Context context, AttributeSet attrs, int defStyleAttr,
-                                  int defStyleRes) {
+            int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
         init(context);
     }
@@ -300,21 +293,15 @@ public class MiniVerticalActionView extends LinearLayout {
 
     private boolean showToolTip(View v, String s, Position tooltipPosition) {
         ViewTooltip.on(v)
-                .autoHide(true, 1000)
-                .clickToHide(true)
-                .position(tooltipPosition)
-                .text(s)
-                .corner(10)
-                .arrowWidth(15)
-                .arrowHeight(15)
-                .show();
+                   .autoHide(true, 1000)
+                   .clickToHide(true)
+                   .position(tooltipPosition)
+                   .text(s)
+                   .corner(10)
+                   .arrowWidth(15)
+                   .arrowHeight(15)
+                   .show();
         return true;
-    }
-
-    @IntDef({VIEW_MODE, CREATE_MODE, EDIT_MODE})
-    @Retention(RetentionPolicy.SOURCE)
-    @interface MiniActionMode {
-
     }
 
     public interface MiniAction {

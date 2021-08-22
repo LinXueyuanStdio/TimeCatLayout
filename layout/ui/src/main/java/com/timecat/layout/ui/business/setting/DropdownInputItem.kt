@@ -57,16 +57,22 @@ class DropdownInputItem<T> @JvmOverloads constructor(
             a.setTextColor(Attr.getPrimaryTextColor(context))
             adapter = a
             autoCompleteTextView.setText(items[0].toString(), false)
-            autoCompleteTextView.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-                override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-                    selectedItem = items[position]
-                    onSelect(items[position], position)
-                }
+            autoCompleteTextView.onItemSelectedListener =
+                object : AdapterView.OnItemSelectedListener {
+                    override fun onItemSelected(
+                        parent: AdapterView<*>?,
+                        view: View?,
+                        position: Int,
+                        id: Long
+                    ) {
+                        selectedItem = items[position]
+                        onSelect(items[position], position)
+                    }
 
-                override fun onNothingSelected(parent: AdapterView<*>?) {
-                    selectedItem = null
+                    override fun onNothingSelected(parent: AdapterView<*>?) {
+                        selectedItem = null
+                    }
                 }
-            }
         }
     var selectedItem: T? = null
     var onSelect: (data: T, index: Int) -> Unit = { _, _ -> }

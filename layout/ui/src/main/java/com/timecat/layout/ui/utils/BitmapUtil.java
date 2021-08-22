@@ -31,7 +31,6 @@ public class BitmapUtil {
     public static final int CORNER_RIGHT = CORNER_TOP_RIGHT | CORNER_BOTTOM_RIGHT;
 
 
-
     public static Bitmap fillet(Bitmap bitmap, int roundPx, int corners) {
         try {
             // 其原理就是：先建立一个与图片大小相同的透明的Bitmap画板
@@ -55,13 +54,13 @@ public class BitmapUtil {
             //把不需要的圆角去掉
             int notRoundedCorners = corners ^ CORNER_ALL;
             if ((notRoundedCorners & CORNER_TOP_LEFT) != 0) {
-                clipTopLeft(canvas,paint,roundPx,width,height);
+                clipTopLeft(canvas, paint, roundPx, width, height);
             }
             if ((notRoundedCorners & CORNER_TOP_RIGHT) != 0) {
                 clipTopRight(canvas, paint, roundPx, width, height);
             }
             if ((notRoundedCorners & CORNER_BOTTOM_LEFT) != 0) {
-                clipBottomLeft(canvas,paint,roundPx,width,height);
+                clipBottomLeft(canvas, paint, roundPx, width, height);
             }
             if ((notRoundedCorners & CORNER_BOTTOM_RIGHT) != 0) {
                 clipBottomRight(canvas, paint, roundPx, width, height);

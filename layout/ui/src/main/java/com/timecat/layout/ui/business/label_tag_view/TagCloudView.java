@@ -96,7 +96,7 @@ public class TagCloudView extends ViewGroup {
         mInflater = LayoutInflater.from(context);
 
         TypedArray a = context.getTheme()
-                .obtainStyledAttributes(attrs, R.styleable.TagCloudView, defStyleAttr, defStyleAttr);
+                              .obtainStyledAttributes(attrs, R.styleable.TagCloudView, defStyleAttr, defStyleAttr);
 
         mTagSize = a.getInteger(R.styleable.TagCloudView_tcvTextSize, DEFAULT_TEXT_SIZE);
         mTagColor = a.getColor(R.styleable.TagCloudView_tcvTextColor, DEFAULT_TEXT_COLOR);
@@ -186,16 +186,16 @@ public class TagCloudView extends ViewGroup {
 
         if (mShowEndText) {
             endText = (TextView) mInflater.inflate(mTagResId, null);
-//      if (mTagResId == DEFAULT_TAG_RESID) {
+            //      if (mTagResId == DEFAULT_TAG_RESID) {
             endText.setBackgroundResource(mBackground);
             endText.setTextSize(TypedValue.COMPLEX_UNIT_SP, mTagSize);
             endText.setTextColor(mTagColor);
-//      }
+            //      }
             @SuppressLint("DrawAllocation") LayoutParams layoutParams = new LayoutParams(
                     LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
             endText.setLayoutParams(layoutParams);
             endText.setText(endTextString == null || endTextString.equals("") ? DEFAULT_END_TEXT_STRING
-                    : endTextString);
+                                                                              : endTextString);
             measureChild(endText, widthMeasureSpec, heightMeasureSpec);
             endTextHeight = endText.getMeasuredHeight();
             endTextWidth = endText.getMeasuredWidth();
@@ -391,7 +391,7 @@ public class TagCloudView extends ViewGroup {
     public void singleLine(boolean mSingleLine) {
         this.mSingleLine = mSingleLine;
         this.setTags(tags);
-//        requestLayout();
+        //        requestLayout();
     }
 
     public List<ITag> getTags() {

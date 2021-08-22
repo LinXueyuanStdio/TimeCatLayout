@@ -25,11 +25,11 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.timecat.layout.ui.R;
-import com.timecat.layout.ui.standard.tablayout.widget.MsgView;
 import com.timecat.layout.ui.standard.tablayout.listener.CustomTabEntity;
 import com.timecat.layout.ui.standard.tablayout.listener.OnTabSelectListener;
 import com.timecat.layout.ui.standard.tablayout.utils.FragmentChangeManager;
 import com.timecat.layout.ui.standard.tablayout.utils.UnreadMsgUtils;
+import com.timecat.layout.ui.standard.tablayout.widget.MsgView;
 
 import java.util.ArrayList;
 
@@ -271,8 +271,9 @@ public class CommonTabLayout extends FrameLayout implements ValueAnimator.Animat
         TextView tv_tab_title = (TextView) tabView.findViewById(R.id.tv_tab_title);
         tv_tab_title.setText(mTabEntitys.get(position).getTabTitle());
         TextView tv_tab_subtitle = (TextView) tabView.findViewById(R.id.tv_tab_subtitle);
-        if (tv_tab_subtitle != null && mTabEntitys.get(position).getSubTitle() != null)
+        if (tv_tab_subtitle != null && mTabEntitys.get(position).getSubTitle() != null) {
             tv_tab_subtitle.setText(mTabEntitys.get(position).getSubTitle());
+        }
         ImageView iv_tab_icon = (ImageView) tabView.findViewById(R.id.iv_tab_icon);
         iv_tab_icon.setImageResource(mTabEntitys.get(position).getTabUnselectedIcon());
 
@@ -295,8 +296,8 @@ public class CommonTabLayout extends FrameLayout implements ValueAnimator.Animat
 
         /** 每一个Tab的布局参数 */
         LinearLayout.LayoutParams lp_tab = mTabSpaceEqual ?
-                new LinearLayout.LayoutParams(0, LayoutParams.MATCH_PARENT, 1.0f) :
-                new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.MATCH_PARENT);
+                                           new LinearLayout.LayoutParams(0, LayoutParams.MATCH_PARENT, 1.0f) :
+                                           new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.MATCH_PARENT);
         if (mTabWidth > 0) {
             lp_tab = new LinearLayout.LayoutParams((int) mTabWidth, LayoutParams.MATCH_PARENT);
         }
@@ -311,7 +312,7 @@ public class CommonTabLayout extends FrameLayout implements ValueAnimator.Animat
             if (tv_tab_title != null) {
                 tv_tab_title.setTextColor(i == mCurrentTab ? mTextSelectColor : mTextUnselectColor);
                 tv_tab_title.setTextSize(TypedValue.COMPLEX_UNIT_PX, mTextsize);
-//            tv_tab_title.setPadding((int) mTabPadding, 0, (int) mTabPadding, 0);
+                //            tv_tab_title.setPadding((int) mTabPadding, 0, (int) mTabPadding, 0);
                 if (mTextAllCaps) {
                     tv_tab_title.setText(tv_tab_title.getText().toString().toUpperCase());
                 }
@@ -384,8 +385,8 @@ public class CommonTabLayout extends FrameLayout implements ValueAnimator.Animat
         mLastP.left = lastTabView.getLeft();
         mLastP.right = lastTabView.getRight();
 
-//        Log.d("AAA", "mLastP--->" + mLastP.left + "&" + mLastP.right);
-//        Log.d("AAA", "mCurrentP--->" + mCurrentP.left + "&" + mCurrentP.right);
+        //        Log.d("AAA", "mLastP--->" + mLastP.left + "&" + mLastP.right);
+        //        Log.d("AAA", "mCurrentP--->" + mCurrentP.left + "&" + mCurrentP.right);
         if (mLastP.left == mCurrentP.left && mLastP.right == mCurrentP.right) {
             invalidate();
         } else {
@@ -596,7 +597,7 @@ public class CommonTabLayout extends FrameLayout implements ValueAnimator.Animat
     }
 
     public void setIndicatorMargin(float indicatorMarginLeft, float indicatorMarginTop,
-                                   float indicatorMarginRight, float indicatorMarginBottom) {
+            float indicatorMarginRight, float indicatorMarginBottom) {
         this.mIndicatorMarginLeft = dp2px(indicatorMarginLeft);
         this.mIndicatorMarginTop = dp2px(indicatorMarginTop);
         this.mIndicatorMarginRight = dp2px(indicatorMarginRight);

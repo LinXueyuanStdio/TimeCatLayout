@@ -12,12 +12,13 @@ import android.graphics.Shader;
 import android.graphics.Shader.TileMode;
 import android.os.Bundle;
 import android.os.Parcelable;
-import androidx.core.view.ViewCompat;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 
 import com.timecat.layout.ui.R;
+
+import androidx.core.view.ViewCompat;
 
 public class ValueBar extends View {
     private static final boolean ORIENTATION_DEFAULT = true;

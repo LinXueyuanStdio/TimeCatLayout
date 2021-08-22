@@ -61,7 +61,7 @@ public class KeyRelativeLayout extends RelativeLayout {
         layoutParams.addRule(ALIGN_PARENT_BOTTOM);
         addView(bgImage, 0, layoutParams);
         ObjectAnimator animator = ObjectAnimator.ofInt(this, "animationStep", 0, 10000);
-//        animator.setDuration(300).addListener(listener);
+        //        animator.setDuration(300).addListener(listener);
         animator.start();
     }
 

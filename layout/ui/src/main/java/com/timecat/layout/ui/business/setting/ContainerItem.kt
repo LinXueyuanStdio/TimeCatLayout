@@ -4,7 +4,6 @@ import android.content.Context
 import android.util.AttributeSet
 import android.view.Gravity
 import android.widget.LinearLayout
-import android.widget.RelativeLayout
 import com.timecat.layout.ui.R
 
 /**

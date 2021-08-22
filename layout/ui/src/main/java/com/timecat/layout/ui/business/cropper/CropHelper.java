@@ -7,7 +7,9 @@ import android.net.Uri;
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.util.Log;
+
 import java.io.File;
+
 /**
  * Revision:
  * - 10:00 2014/10/03 Basic utils.
@@ -33,7 +35,7 @@ public class CropHelper {
     public static final String CROP_CACHE_FOLDER = "PhotoCropper";
 
     public static Uri generateUri() {
-        File cacheFolder = new File(Environment.getExternalStorageDirectory() + File.separator +"timecat"+ File.separator + CROP_CACHE_FOLDER);
+        File cacheFolder = new File(Environment.getExternalStorageDirectory() + File.separator + "timecat" + File.separator + CROP_CACHE_FOLDER);
         if (!cacheFolder.exists()) {
             try {
                 boolean result = cacheFolder.mkdir();
@@ -53,7 +55,7 @@ public class CropHelper {
     }
 
     public static void handleResult(CropHandler handler, int requestCode, int resultCode, Intent data) {
-        if (handler == null) return;
+        if (handler == null) { return; }
 
         if (resultCode == Activity.RESULT_CANCELED) {
             handler.onCancel();
@@ -89,14 +91,14 @@ public class CropHelper {
                         }
                     }
                 case REQUEST_CAMERA:
-//                    if (cropParams.enable) {
-//                        // Send this Uri to Crop
-//                        Intent intent = buildCropFromUriIntent(cropParams);
-//                        handler.handleIntent(intent, REQUEST_CROP);
-//                    } else {
+                    //                    if (cropParams.enable) {
+                    //                        // Send this Uri to Crop
+                    //                        Intent intent = buildCropFromUriIntent(cropParams);
+                    //                        handler.handleIntent(intent, REQUEST_CROP);
+                    //                    } else {
                     Log.d(TAG, "Photo cropped!");
                     onPhotoCropped(handler, cropParams);
-//                    }
+                    //                    }
                     break;
             }
         }
@@ -105,14 +107,14 @@ public class CropHelper {
     private static void onPhotoCropped(CropHandler handler, CropParams cropParams) {
 
         handler.onPhotoCropped(cropParams.uri);
-//        if (cropParams.compress) {
-//            Uri originUri = cropParams.uri;
-//            Uri compressUri = CropHelper.generateUri();
-//            CompressImageUtils.compressImageFile(cropParams, originUri, compressUri);
-//            handler.onCompressed(compressUri);
-//        } else {
-//            handler.onPhotoCropped(cropParams.uri);
-//        }
+        //        if (cropParams.compress) {
+        //            Uri originUri = cropParams.uri;
+        //            Uri compressUri = CropHelper.generateUri();
+        //            CompressImageUtils.compressImageFile(cropParams, originUri, compressUri);
+        //            handler.onCompressed(compressUri);
+        //        } else {
+        //            handler.onPhotoCropped(cropParams.uri);
+        //        }
     }
 
     // None-Crop Intents
@@ -122,13 +124,13 @@ public class CropHelper {
         if (params.enable) {
             intent = buildCropIntent(Intent.ACTION_PICK, params);
         } else {
-//            intent = new Intent(Intent.ACTION_GET_CONTENT)
-//                    .setType("image/*")
-//                    .putExtra(MediaStore.EXTRA_OUTPUT, params.uri);
+            //            intent = new Intent(Intent.ACTION_GET_CONTENT)
+            //                    .setType("image/*")
+            //                    .putExtra(MediaStore.EXTRA_OUTPUT, params.uri);
             intent = new Intent(Intent.ACTION_PICK);
             intent.setType("image/*");
-//            Intent albumIntent = new Intent(Intent.ACTION_PICK, null);
-//               albumIntent.setDataAndType(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, "image/*");
+            //            Intent albumIntent = new Intent(Intent.ACTION_PICK, null);
+            //               albumIntent.setDataAndType(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, "image/*");
         }
         return intent;
     }
@@ -150,7 +152,7 @@ public class CropHelper {
     // Clear Cache
 
     public static boolean clearCacheDir() {
-        File cacheFolder = new File(Environment.getExternalStorageDirectory() + File.separator +"timecat"+ File.separator + CROP_CACHE_FOLDER);
+        File cacheFolder = new File(Environment.getExternalStorageDirectory() + File.separator + "timecat" + File.separator + CROP_CACHE_FOLDER);
         if (cacheFolder.exists() && cacheFolder.listFiles() != null) {
             for (File file : cacheFolder.listFiles()) {
                 boolean result = file.delete();
@@ -162,7 +164,7 @@ public class CropHelper {
     }
 
     public static boolean clearCachedCropFile(Uri uri) {
-        if (uri == null) return false;
+        if (uri == null) { return false; }
 
         File file = new File(uri.getPath());
         if (file.exists()) {

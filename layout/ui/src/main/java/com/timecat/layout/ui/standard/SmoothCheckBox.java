@@ -152,8 +152,7 @@ public class SmoothCheckBox extends View implements Checkable {
         setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (!SmoothCheckBox.this.isCheckable())
-                    return;
+                if (!SmoothCheckBox.this.isCheckable()) { return; }
                 SmoothCheckBox.this.toggle();
                 mTickDrawing = false;
                 mDrewDistance = 0;

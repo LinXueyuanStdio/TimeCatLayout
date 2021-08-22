@@ -68,7 +68,11 @@ inline fun ViewGroup.ImageView(
     return imageView.apply(init).also { if (autoAdd) addView(it) }
 }
 
-inline fun ViewGroup.Button(style: Int? = null, autoAdd: Boolean = true, init: Button.() -> Unit): Button {
+inline fun ViewGroup.Button(
+    style: Int? = null,
+    autoAdd: Boolean = true,
+    init: Button.() -> Unit
+): Button {
     val button =
         if (style != null) AppCompatButton(
             ContextThemeWrapper(context, style)
@@ -331,7 +335,7 @@ inline var View.weight: Float
     }
     set(value) {
         layoutParams =
-            LinearLayout.LayoutParams(layoutParams.width, layoutParams.height).also { it ->
+            LinearLayout.LayoutParams(layoutParams.width, layoutParams.height).also {
                 it.gravity = (layoutParams as? LinearLayout.LayoutParams)?.gravity ?: -1
                 it.weight = value
             }
@@ -342,7 +346,7 @@ inline var View.layout_gravity: Int
     }
     set(value) {
         layoutParams =
-            LinearLayout.LayoutParams(layoutParams.width, layoutParams.height).also { it ->
+            LinearLayout.LayoutParams(layoutParams.width, layoutParams.height).also {
                 it.weight = (layoutParams as? LinearLayout.LayoutParams)?.weight ?: 0f
                 it.gravity = value
             }

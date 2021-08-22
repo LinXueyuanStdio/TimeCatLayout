@@ -14,7 +14,7 @@ import java.io.FileNotFoundException;
 public class BitmapUtil {
 
     public static Bitmap decodeUriAsBitmap(Context context, Uri uri) {
-        if (context == null || uri == null) return null;
+        if (context == null || uri == null) { return null; }
 
         Bitmap bitmap;
         try {

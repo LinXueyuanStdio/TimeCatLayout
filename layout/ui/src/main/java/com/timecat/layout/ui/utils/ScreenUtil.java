@@ -171,6 +171,7 @@ public class ScreenUtil {
         DisplayMetrics displayMetrics = context.getResources().getDisplayMetrics();
         return displayMetrics.widthPixels;
     }
+
     /**
      * 获取屏幕高度 单位：像素
      *
@@ -192,7 +193,7 @@ public class ScreenUtil {
 
     public static int getNavigationBarHeight(Context context) {
         int height = 0;
-        int resourceId = context.getResources().getIdentifier("navigation_bar_height","dimen", "android");
+        int resourceId = context.getResources().getIdentifier("navigation_bar_height", "dimen", "android");
         if (resourceId > 0) {
             height = context.getResources().getDimensionPixelSize(resourceId);
         }
@@ -202,6 +203,7 @@ public class ScreenUtil {
     public static int dpToPx(Resources r, float dp) {
         return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp, r.getDisplayMetrics());
     }
+
     /**
      * dp 转 px
      *
@@ -213,6 +215,7 @@ public class ScreenUtil {
         //0.5f 是四舍五入的偏移量
         return (int) (dp * getDensity(activity) + 0.5f);
     }
+
     /**
      * SP 转 Pixels
      *

@@ -3,13 +3,10 @@ package com.timecat.layout.ui.business.setting
 import android.content.Context
 import android.util.AttributeSet
 import android.view.View
-import android.view.ViewGroup
 import com.timecat.component.identity.Attr
-import com.timecat.layout.ui.layout.dp
 import com.timecat.layout.ui.layout.layout_height
 import com.timecat.layout.ui.layout.layout_width
 import com.timecat.layout.ui.layout.match_parent
-import com.timecat.layout.ui.utils.ViewUtil
 
 /**
  * @author 林学渊

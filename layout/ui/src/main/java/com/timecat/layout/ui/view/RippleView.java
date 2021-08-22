@@ -83,7 +83,7 @@ public class RippleView extends RelativeLayout {
      * @param attrs   Attribute used to initialize fields
      */
     private void init(final Context context, final AttributeSet attrs) {
-        if (isInEditMode()) return;
+        if (isInEditMode()) { return; }
 
         final TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.RippleView);
         rippleColor = typedArray.getColor(R.styleable.RippleView_rv_color, getResources().getColor(R.color.rippelColor));
@@ -139,11 +139,11 @@ public class RippleView extends RelativeLayout {
                 timerEmpty = 0;
                 canvas.restore();
                 invalidate();
-                if (onCompletionListener != null) onCompletionListener.onComplete(this);
+                if (onCompletionListener != null) { onCompletionListener.onComplete(this); }
                 return;
-            } else canvasHandler.postDelayed(runnable, frameRate);
+            } else { canvasHandler.postDelayed(runnable, frameRate); }
 
-            if (timer == 0) canvas.save();
+            if (timer == 0) { canvas.save(); }
 
 
             canvas.drawCircle(x, y, (radiusMax * (((float) timer * frameRate) / rippleDuration)), paint);
@@ -151,7 +151,7 @@ public class RippleView extends RelativeLayout {
             paint.setColor(Color.parseColor("#ffff4444"));
 
             if (rippleType == 1 && originBitmap != null && (((float) timer * frameRate) / rippleDuration) > 0.4f) {
-                if (durationEmpty == -1) durationEmpty = rippleDuration - timer * frameRate;
+                if (durationEmpty == -1) { durationEmpty = rippleDuration - timer * frameRate; }
 
                 timerEmpty++;
                 final Bitmap tmpBitmap = getCircleBitmap((int) ((radiusMax) * (((float) timerEmpty * frameRate) / (durationEmpty))));
@@ -162,11 +162,10 @@ public class RippleView extends RelativeLayout {
             paint.setColor(rippleColor);
 
             if (rippleType == 1) {
-                if ((((float) timer * frameRate) / rippleDuration) > 0.6f)
+                if ((((float) timer * frameRate) / rippleDuration) > 0.6f) {
                     paint.setAlpha((int) (rippleAlpha - ((rippleAlpha) * (((float) timerEmpty * frameRate) / (durationEmpty)))));
-                else paint.setAlpha(rippleAlpha);
-            } else
-                paint.setAlpha((int) (rippleAlpha - ((rippleAlpha) * (((float) timer * frameRate) / rippleDuration))));
+                } else { paint.setAlpha(rippleAlpha); }
+            } else { paint.setAlpha((int) (rippleAlpha - ((rippleAlpha) * (((float) timer * frameRate) / rippleDuration)))); }
 
             timer++;
         }
@@ -211,11 +210,11 @@ public class RippleView extends RelativeLayout {
      */
     private void createAnimation(final float x, final float y) {
         if (this.isEnabled() && !animationRunning) {
-            if (hasToZoom) this.startAnimation(scaleAnimation);
+            if (hasToZoom) { this.startAnimation(scaleAnimation); }
 
             radiusMax = Math.max(WIDTH, HEIGHT);
 
-            if (rippleType != 2) radiusMax /= 2;
+            if (rippleType != 2) { radiusMax /= 2; }
 
             radiusMax -= ripplePadding;
 
@@ -229,7 +228,7 @@ public class RippleView extends RelativeLayout {
 
             animationRunning = true;
 
-            if (rippleType == 1 && originBitmap == null) originBitmap = getDrawingCache(true);
+            if (rippleType == 1 && originBitmap == null) { originBitmap = getDrawingCache(true); }
 
             invalidate();
         }
@@ -261,11 +260,13 @@ public class RippleView extends RelativeLayout {
             final int position = adapterView.getPositionForView(this);
             final long id = adapterView.getItemIdAtPosition(position);
             if (isLongClick) {
-                if (adapterView.getOnItemLongClickListener() != null)
+                if (adapterView.getOnItemLongClickListener() != null) {
                     adapterView.getOnItemLongClickListener().onItemLongClick(adapterView, this, position, id);
+                }
             } else {
-                if (adapterView.getOnItemClickListener() != null)
+                if (adapterView.getOnItemClickListener() != null) {
                     adapterView.getOnItemClickListener().onItemClick(adapterView, this, position, id);
+                }
             }
         }
     }

@@ -7,10 +7,10 @@ import android.graphics.RectF;
 import android.util.AttributeSet;
 import android.view.View;
 
+import com.timecat.layout.ui.R;
+
 import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
-
-import com.timecat.layout.ui.R;
 
 public class TickProgressBar extends View {
     private int mColorArc;

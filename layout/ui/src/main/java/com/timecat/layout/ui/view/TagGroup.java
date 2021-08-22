@@ -28,12 +28,12 @@ import android.view.inputmethod.InputConnection;
 import android.view.inputmethod.InputConnectionWrapper;
 import android.widget.TextView;
 
-import androidx.appcompat.widget.AppCompatTextView;
-
 import com.timecat.layout.ui.R;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import androidx.appcompat.widget.AppCompatTextView;
 
 /**
  * A <code>TagGroup</code> is a special layout with a set of tags.
@@ -897,7 +897,7 @@ public class TagGroup extends ViewGroup {
             setPadding(horizontalPadding,
                     verticalPadding,
                     isChecked ? (int) (horizontalPadding + getHeight() / 2.5f + CHECKED_MARKER_OFFSET)
-                            : horizontalPadding,
+                              : horizontalPadding,
                     verticalPadding);
             invalidatePaint();
         }

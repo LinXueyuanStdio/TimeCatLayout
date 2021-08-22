@@ -24,6 +24,14 @@ import android.widget.ListView;
 import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
 
+import com.blankj.utilcode.util.ScreenUtils;
+import com.timecat.extend.arms.BaseApplication;
+import com.timecat.layout.ui.R;
+
+import java.lang.reflect.Method;
+import java.util.Arrays;
+import java.util.List;
+
 import androidx.annotation.ArrayRes;
 import androidx.annotation.AttrRes;
 import androidx.annotation.ColorInt;
@@ -33,14 +41,6 @@ import androidx.annotation.Nullable;
 import androidx.annotation.StyleableRes;
 import androidx.appcompat.content.res.AppCompatResources;
 import androidx.appcompat.widget.AppCompatTextView;
-
-import com.blankj.utilcode.util.ScreenUtils;
-import com.timecat.extend.arms.BaseApplication;
-import com.timecat.layout.ui.R;
-
-import java.lang.reflect.Method;
-import java.util.Arrays;
-import java.util.List;
 
 /**
  * 自定义下拉框，使用AppCompatTextView + PopupWindow组合实现

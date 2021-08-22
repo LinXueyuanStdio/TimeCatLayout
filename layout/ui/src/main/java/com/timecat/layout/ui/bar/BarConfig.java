@@ -116,8 +116,7 @@ class BarConfig {
             Class clazz = Class.forName("com.android.internal.R$dimen");
             Object object = clazz.newInstance();
             int resourceId = Integer.parseInt(clazz.getField(key).get(object).toString());
-            if (resourceId > 0)
-                result = res.getDimensionPixelSize(resourceId);
+            if (resourceId > 0) { result = res.getDimensionPixelSize(resourceId); }
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -203,14 +202,14 @@ class BarConfig {
             Point realSize = new Point();
             display.getSize(size);
             display.getRealSize(realSize);
-            boolean  result  = realSize.y!=size.y;
-            return realSize.y!=size.y;
-        }else {
+            boolean result = realSize.y != size.y;
+            return realSize.y != size.y;
+        } else {
             boolean menu = ViewConfiguration.get(activity).hasPermanentMenuKey();
             boolean back = KeyCharacterMap.deviceHasKey(KeyEvent.KEYCODE_BACK);
-            if(menu || back) {
+            if (menu || back) {
                 return false;
-            }else {
+            } else {
                 return true;
             }
         }

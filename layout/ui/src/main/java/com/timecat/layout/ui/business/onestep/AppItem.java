@@ -79,10 +79,10 @@ public class AppItem extends SidebarItem {
         }
         ResolveInfo ri = getResolveInfo();
         if (ri != null) {
-//            Drawable ret = IconRedirect.getRedirectIcon(mName.getPackageName(), mName.getClassName(), mContext);
-//            if (ret != null) {
-//                return ret;
-//            }
+            //            Drawable ret = IconRedirect.getRedirectIcon(mName.getPackageName(), mName.getClassName(), mContext);
+            //            if (ret != null) {
+            //                return ret;
+            //            }
             Drawable ret = ri.loadIcon(mContext.getPackageManager());
             mAvatar = new SoftReference<Drawable>(ret);
             return ret;

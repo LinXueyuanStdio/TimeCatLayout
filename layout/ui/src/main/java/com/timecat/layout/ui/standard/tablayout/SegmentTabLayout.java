@@ -11,8 +11,6 @@ import android.graphics.Rect;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
 import android.os.Parcelable;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentActivity;
 import android.util.AttributeSet;
 import android.util.SparseArray;
 import android.util.TypedValue;
@@ -23,13 +21,16 @@ import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.timecat.layout.ui.R;
+import com.timecat.layout.ui.standard.tablayout.listener.OnTabSelectListener;
 import com.timecat.layout.ui.standard.tablayout.utils.FragmentChangeManager;
 import com.timecat.layout.ui.standard.tablayout.utils.UnreadMsgUtils;
 import com.timecat.layout.ui.standard.tablayout.widget.MsgView;
-import com.timecat.layout.ui.standard.tablayout.listener.OnTabSelectListener;
-import com.timecat.layout.ui.R;
 
 import java.util.ArrayList;
+
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
 
 public class SegmentTabLayout extends FrameLayout implements ValueAnimator.AnimatorUpdateListener {
     private Context mContext;
@@ -212,8 +213,8 @@ public class SegmentTabLayout extends FrameLayout implements ValueAnimator.Anima
 
         /** 每一个Tab的布局参数 */
         LinearLayout.LayoutParams lp_tab = mTabSpaceEqual ?
-                new LinearLayout.LayoutParams(0, LayoutParams.MATCH_PARENT, 1.0f) :
-                new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.MATCH_PARENT);
+                                           new LinearLayout.LayoutParams(0, LayoutParams.MATCH_PARENT, 1.0f) :
+                                           new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.MATCH_PARENT);
         if (mTabWidth > 0) {
             lp_tab = new LinearLayout.LayoutParams((int) mTabWidth, LayoutParams.MATCH_PARENT);
         }
@@ -227,7 +228,7 @@ public class SegmentTabLayout extends FrameLayout implements ValueAnimator.Anima
             TextView tv_tab_title = (TextView) tabView.findViewById(R.id.tv_tab_title);
             tv_tab_title.setTextColor(i == mCurrentTab ? mTextSelectColor : mTextUnselectColor);
             tv_tab_title.setTextSize(TypedValue.COMPLEX_UNIT_PX, mTextsize);
-//            tv_tab_title.setPadding((int) mTabPadding, 0, (int) mTabPadding, 0);
+            //            tv_tab_title.setPadding((int) mTabPadding, 0, (int) mTabPadding, 0);
             if (mTextAllCaps) {
                 tv_tab_title.setText(tv_tab_title.getText().toString().toUpperCase());
             }
@@ -256,8 +257,8 @@ public class SegmentTabLayout extends FrameLayout implements ValueAnimator.Anima
         mLastP.left = lastTabView.getLeft();
         mLastP.right = lastTabView.getRight();
 
-//        Log.d("AAA", "mLastP--->" + mLastP.left + "&" + mLastP.right);
-//        Log.d("AAA", "mCurrentP--->" + mCurrentP.left + "&" + mCurrentP.right);
+        //        Log.d("AAA", "mLastP--->" + mLastP.left + "&" + mLastP.right);
+        //        Log.d("AAA", "mCurrentP--->" + mCurrentP.left + "&" + mCurrentP.right);
         if (mLastP.left == mCurrentP.left && mLastP.right == mCurrentP.right) {
             invalidate();
         } else {
@@ -439,7 +440,7 @@ public class SegmentTabLayout extends FrameLayout implements ValueAnimator.Anima
     }
 
     public void setIndicatorMargin(float indicatorMarginLeft, float indicatorMarginTop,
-                                   float indicatorMarginRight, float indicatorMarginBottom) {
+            float indicatorMarginRight, float indicatorMarginBottom) {
         this.mIndicatorMarginLeft = dp2px(indicatorMarginLeft);
         this.mIndicatorMarginTop = dp2px(indicatorMarginTop);
         this.mIndicatorMarginRight = dp2px(indicatorMarginRight);

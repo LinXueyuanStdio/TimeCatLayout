@@ -3,7 +3,6 @@ package com.timecat.layout.ui.business.setting
 import android.content.Context
 import android.util.AttributeSet
 import android.widget.HorizontalScrollView
-import com.timecat.component.commonsdk.utils.override.LogUtil
 import com.timecat.layout.ui.layout.LinearLayout
 import com.timecat.layout.ui.layout.layout_height
 import com.timecat.layout.ui.layout.layout_width

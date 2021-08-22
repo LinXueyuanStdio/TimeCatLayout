@@ -465,7 +465,8 @@ final class BitmapUtils {
             } finally {
                 closeSafe(stream);
             }
-        } while (options.inSampleSize <= 512);
+        }
+        while (options.inSampleSize <= 512);
         throw new RuntimeException("Failed to decode image: " + uri);
     }
 
@@ -489,7 +490,8 @@ final class BitmapUtils {
                 } catch (OutOfMemoryError e) {
                     options.inSampleSize *= 2;
                 }
-            } while (options.inSampleSize <= 512);
+            }
+            while (options.inSampleSize <= 512);
         } catch (Exception e) {
             throw new RuntimeException("Failed to load sampled bitmap: " + uri + "\r\n" + e.getMessage(), e);
         } finally {

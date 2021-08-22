@@ -35,7 +35,7 @@ public abstract class BaseTransitionLayout extends FrameLayout {
 
     public abstract void firstInit(String info);
 
-    public void onAnimationEnd(){
+    public void onAnimationEnd() {
         super.onAnimationEnd();
     }
 

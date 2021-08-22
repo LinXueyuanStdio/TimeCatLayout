@@ -97,7 +97,7 @@ public class SlideToCloseView extends RelativeLayout {
             case MotionEvent.ACTION_DOWN:
                 intercepted = false;
                 mLastDownX = (int) event.getX();
-//                LogUtil.i(LOG_TAG, "mLastDownX= " + mLastDownX);
+                //                LogUtil.i(LOG_TAG, "mLastDownX= " + mLastDownX);
                 break;
             case MotionEvent.ACTION_MOVE:
                 // <!-- Base "touch slop" value used by ViewConfiguration as a
@@ -116,14 +116,14 @@ public class SlideToCloseView extends RelativeLayout {
     public boolean onTouchEvent(MotionEvent event) {
         acquireVelocityTracker(event);
         int x = (int) event.getX();
-//        LogUtil.i(LOG_TAG, "x= " + x);
+        //        LogUtil.i(LOG_TAG, "x= " + x);
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
                 if (!mScroller.isFinished()) {
                     mScroller.abortAnimation();
                 }
-//                mLastX = x;
-//                LogUtil.i(LOG_TAG, "mLastX(ACTION_DOWN)= " + mLastX);
+                //                mLastX = x;
+                //                LogUtil.i(LOG_TAG, "mLastX(ACTION_DOWN)= " + mLastX);
                 break;
             case MotionEvent.ACTION_MOVE:
                 // 每次滑动的距离
@@ -139,7 +139,7 @@ public class SlideToCloseView extends RelativeLayout {
                 final VelocityTracker velocityTracker = mVelocityTracker;
                 velocityTracker.computeCurrentVelocity(1000);
                 int xVelocity = (int) mVelocityTracker.getXVelocity();
-//                LogUtil.i(LOG_TAG, "xVelocity= " + xVelocity);
+                //                LogUtil.i(LOG_TAG, "xVelocity= " + xVelocity);
                 releaseVelocityTracker();
                 // 总共滑动的距离
                 deltaX = x - mLastDownX;
@@ -158,7 +158,7 @@ public class SlideToCloseView extends RelativeLayout {
                 break;
         }
         mLastX = x;
-//        LogUtil.i(LOG_TAG, "mLastX= " + mLastX);
+        //        LogUtil.i(LOG_TAG, "mLastX= " + mLastX);
         return true;
     }
 

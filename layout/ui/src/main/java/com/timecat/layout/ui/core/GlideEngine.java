@@ -3,14 +3,14 @@ package com.timecat.layout.ui.core;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.target.SimpleTarget;
 import com.bumptech.glide.request.transition.Transition;
 import com.coorchice.library.ImageEngine;
 import com.coorchice.library.image_engine.Engine;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 /**
  * @author 林学渊

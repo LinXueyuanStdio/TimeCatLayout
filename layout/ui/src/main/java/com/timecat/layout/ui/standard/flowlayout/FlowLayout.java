@@ -7,14 +7,14 @@ import android.util.LayoutDirection;
 import android.view.View;
 import android.view.ViewGroup;
 
-import androidx.core.text.TextUtilsCompat;
-
 import com.timecat.layout.ui.R;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
+
+import androidx.core.text.TextUtilsCompat;
 
 public class FlowLayout extends ViewGroup {
     private static final String TAG = "FlowLayout";
@@ -146,7 +146,7 @@ public class FlowLayout extends ViewGroup {
                     if (lineCount >= limitLineCount) {
                         setOverFlow(true);
                         break;
-                    }  else {
+                    } else {
                         setOverFlow(false);
                     }
                 }
@@ -181,7 +181,7 @@ public class FlowLayout extends ViewGroup {
 
         for (int i = 0; i < cCount; i++) {
             View child = getChildAt(i);
-            if (child.getVisibility() == View.GONE) continue;
+            if (child.getVisibility() == View.GONE) { continue; }
             MarginLayoutParams lp = (MarginLayoutParams) child
                     .getLayoutParams();
 

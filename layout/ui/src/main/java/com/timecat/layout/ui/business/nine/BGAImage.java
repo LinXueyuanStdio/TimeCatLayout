@@ -2,10 +2,10 @@ package com.timecat.layout.ui.business.nine;
 
 import android.widget.ImageView;
 
-import androidx.annotation.DrawableRes;
-
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
+
+import androidx.annotation.DrawableRes;
 
 /**
  * @author 林学渊
@@ -30,14 +30,14 @@ class BGAImage {
     public static void display(ImageView imageView, @DrawableRes int placeholderResId, String path, int width, int height) {
         String finalPath = getPath(path);
         Glide.with(imageView.getContext()).load(finalPath)
-                .apply(
-                        new RequestOptions()
-                                .placeholder(placeholderResId)
-                                .error(placeholderResId)
-                                .override(width, height)
-                                .dontAnimate()
-                )
-                .into(imageView);
+             .apply(
+                     new RequestOptions()
+                             .placeholder(placeholderResId)
+                             .error(placeholderResId)
+                             .override(width, height)
+                             .dontAnimate()
+             )
+             .into(imageView);
     }
 
     public static void display(ImageView imageView, @DrawableRes int placeholderResId, String path, int size) {

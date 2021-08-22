@@ -16,7 +16,7 @@ import com.timecat.identity.skin.SkinEnable;
  * Created by huanghaibin on 2018/2/9.
  */
 
-public class CustomWeekView extends WeekView  implements SkinEnable {
+public class CustomWeekView extends WeekView implements SkinEnable {
 
 
     private int mRadius;
@@ -136,7 +136,7 @@ public class CustomWeekView extends WeekView  implements SkinEnable {
             canvas.drawCircle(cx, cy, mRadius, mCurrentDayPaint);
         }
 
-        if(hasScheme){
+        if (hasScheme) {
             canvas.drawCircle(x + mItemWidth - mPadding - mCircleRadius / 2, mPadding + mCircleRadius, mCircleRadius, mSchemeBasicPaint);
 
             mTextPaint.setColor(calendar.getSchemeColor());
@@ -178,13 +178,13 @@ public class CustomWeekView extends WeekView  implements SkinEnable {
         } else {
             canvas.drawText(String.valueOf(calendar.getDay()), cx, mTextBaseLine + top,
                     calendar.isCurrentDay() ? mCurDayTextPaint :
-                            calendar.isCurrentMonth() ? mCurMonthTextPaint : mOtherMonthTextPaint);
+                    calendar.isCurrentMonth() ? mCurMonthTextPaint : mOtherMonthTextPaint);
 
             canvas.drawText(calendar.getLunar(), cx, mTextBaseLine + mItemHeight / 10,
                     calendar.isCurrentDay() ? mCurDayLunarTextPaint :
-                            !TextUtils.isEmpty(calendar.getSolarTerm()) ? mSolarTermTextPaint :
-                                    calendar.isCurrentMonth() ?
-                                            mCurMonthLunarTextPaint : mOtherMonthLunarTextPaint);
+                    !TextUtils.isEmpty(calendar.getSolarTerm()) ? mSolarTermTextPaint :
+                    calendar.isCurrentMonth() ?
+                    mCurMonthLunarTextPaint : mOtherMonthLunarTextPaint);
         }
     }
 
@@ -203,9 +203,11 @@ public class CustomWeekView extends WeekView  implements SkinEnable {
     private int getSpecialColor() {
         return Attr.getAccentColor(getContext());
     }
+
     private int getPrimaryTextColor() {
         return Attr.getPrimaryTextColor(getContext());
     }
+
     private int getSecondaryTextColor() {
         return Attr.getSecondaryTextColor(getContext());
     }

@@ -14,9 +14,9 @@ import android.os.Parcelable;
 import android.util.AttributeSet;
 import android.util.StateSet;
 
-import androidx.appcompat.widget.AppCompatButton;
-
 import com.timecat.layout.ui.R;
+
+import androidx.appcompat.widget.AppCompatButton;
 
 /**
  * @author dlink
@@ -28,63 +28,60 @@ import com.timecat.layout.ui.R;
  * @usage
 // 1.
 <com.time.cat.mvp.view.progressButton.CircularProgressButton
-    android:id="@+id/circular_progress_btn"
-    android:layout_width="match_parent"
-    android:layout_height="48dp"
-    android:layout_marginEnd="50dp"
-    android:layout_marginStart="50dp"
-    android:textColor="@color/white"
-    android:textSize="12sp"
-    app:cpb_cornerRadius="24dp"
-    app:cpb_textComplete="@string/Complete"
-    app:cpb_textError="@string/Error"
-    app:cpb_textIdle="@string/Upload"/>
+android:id="@+id/circular_progress_btn"
+android:layout_width="match_parent"
+android:layout_height="48dp"
+android:layout_marginEnd="50dp"
+android:layout_marginStart="50dp"
+android:textColor="@color/white"
+android:textSize="12sp"
+app:cpb_cornerRadius="24dp"
+app:cpb_textComplete="@string/Complete"
+app:cpb_textError="@string/Error"
+app:cpb_textIdle="@string/Upload"/>
 // 2.
 
-    private void simulateSuccessProgress(final CircularProgressButton button) {
-        ValueAnimator widthAnimation = ValueAnimator.ofInt(1, 100);
-        widthAnimation.setDuration(1500);
-        widthAnimation.setInterpolator(new AccelerateDecelerateInterpolator());
-        widthAnimation.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
-            @Override
-            public void onAnimationUpdate(ValueAnimator animation) {
-                Integer value = (Integer) animation.getAnimatedValue();
-                button.setProgress(value);
-            }
-        });
-        widthAnimation.start();
-    }
+private void simulateSuccessProgress(final CircularProgressButton button) {
+ValueAnimator widthAnimation = ValueAnimator.ofInt(1, 100);
+widthAnimation.setDuration(1500);
+widthAnimation.setInterpolator(new AccelerateDecelerateInterpolator());
+widthAnimation.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+@Override public void onAnimationUpdate(ValueAnimator animation) {
+Integer value = (Integer) animation.getAnimatedValue();
+button.setProgress(value);
+}
+});
+widthAnimation.start();
+}
 
-    private void simulateErrorProgress(final CircularProgressButton button) {
-        ValueAnimator widthAnimation = ValueAnimator.ofInt(1, 99);
-        widthAnimation.setDuration(1500);
-        widthAnimation.setInterpolator(new AccelerateDecelerateInterpolator());
-        widthAnimation.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
-            @Override
-            public void onAnimationUpdate(ValueAnimator animation) {
-                Integer value = (Integer) animation.getAnimatedValue();
-                button.setProgress(value);
-                if (value == 99) {
-                    button.setProgress(-1);
-                }
-            }
-        });
-        widthAnimation.start();
-    }
+private void simulateErrorProgress(final CircularProgressButton button) {
+ValueAnimator widthAnimation = ValueAnimator.ofInt(1, 99);
+widthAnimation.setDuration(1500);
+widthAnimation.setInterpolator(new AccelerateDecelerateInterpolator());
+widthAnimation.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+@Override public void onAnimationUpdate(ValueAnimator animation) {
+Integer value = (Integer) animation.getAnimatedValue();
+button.setProgress(value);
+if (value == 99) {
+button.setProgress(-1);
+}
+}
+});
+widthAnimation.start();
+}
 
 // 3.
 
-            circular_progress_btn = v.findViewById(R.id.circular_progress_btn);
-            circular_progress_btn.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onActionDown(View v) {
-                    if (circular_progress_btn.getProgress() == 0) {
-                        simulateErrorProgress(circular_progress_btn);
-                    } else {
-                        circular_progress_btn.setProgress(0);
-                    }
-                }
-            });
+circular_progress_btn = v.findViewById(R.id.circular_progress_btn);
+circular_progress_btn.setOnClickListener(new View.OnClickListener() {
+@Override public void onActionDown(View v) {
+if (circular_progress_btn.getProgress() == 0) {
+simulateErrorProgress(circular_progress_btn);
+} else {
+circular_progress_btn.setProgress(0);
+}
+}
+});
  */
 public class CircularProgressButton extends AppCompatButton {
     public static final int IDLE_STATE_PROGRESS = 0;

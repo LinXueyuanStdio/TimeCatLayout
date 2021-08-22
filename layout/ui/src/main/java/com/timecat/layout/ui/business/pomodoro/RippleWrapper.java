@@ -1,4 +1,5 @@
 package com.timecat.layout.ui.business.pomodoro;
+
 import android.animation.Animator;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
@@ -16,6 +17,7 @@ import com.timecat.layout.ui.R;
 import java.util.ArrayList;
 
 import androidx.core.content.ContextCompat;
+
 public class RippleWrapper extends RelativeLayout {
     private boolean mIsRunning;
     private AnimatorSet mAnimatorSet;

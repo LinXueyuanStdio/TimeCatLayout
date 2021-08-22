@@ -12,14 +12,15 @@ import android.graphics.Shader;
 import android.graphics.SweepGradient;
 import android.os.Bundle;
 import android.os.Parcelable;
-import androidx.core.internal.view.SupportMenu;
-import androidx.core.view.InputDeviceCompat;
-import androidx.core.view.ViewCompat;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 
 import com.timecat.layout.ui.R;
+
+import androidx.core.internal.view.SupportMenu;
+import androidx.core.view.InputDeviceCompat;
+import androidx.core.view.ViewCompat;
 
 public class HoloColorPicker extends View {
     private static final int[] COLORS = new int[]{SupportMenu.CATEGORY_MASK, -65281, -16776961, -16711681, -16711936, InputDeviceCompat.SOURCE_ANY, SupportMenu.CATEGORY_MASK};

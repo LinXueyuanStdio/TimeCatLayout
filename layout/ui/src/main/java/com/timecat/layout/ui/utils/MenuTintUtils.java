@@ -21,7 +21,7 @@ import androidx.core.graphics.drawable.DrawableCompat;
  * @usage null
  */
 public class MenuTintUtils {
-    public static void tintAllIcons(Menu menu,  @ColorInt final int color) {
+    public static void tintAllIcons(Menu menu, @ColorInt final int color) {
         for (int i = 0; i < menu.size(); i++) {
             final MenuItem item = menu.getItem(i);
             tintMenuItemIcon(item, color);
@@ -38,7 +38,7 @@ public class MenuTintUtils {
         }
     }
 
-    public static void tintMenuItemIcon(MenuItem item,  @ColorInt final int color) {
+    public static void tintMenuItemIcon(MenuItem item, @ColorInt final int color) {
         final Drawable drawable = item.getIcon();
         if (drawable != null) {
             final Drawable wrapped = DrawableCompat.wrap(drawable);
@@ -48,15 +48,15 @@ public class MenuTintUtils {
         }
     }
 
-    private static void tintShareIconIfPresent(MenuItem item,  @ColorInt int color) {
+    private static void tintShareIconIfPresent(MenuItem item, @ColorInt int color) {
         if (item.getActionView() != null) {
-            final View actionView             = item.getActionView();
+            final View actionView = item.getActionView();
             final View expandActivitiesButton = actionView.findViewById(R.id.expand_activities_button);
             if (expandActivitiesButton != null) {
                 final ImageView image = (ImageView) expandActivitiesButton.findViewById(R.id.image);
                 if (image != null) {
                     final Drawable drawable = image.getDrawable();
-                    final Drawable wrapped  = DrawableCompat.wrap(drawable);
+                    final Drawable wrapped = DrawableCompat.wrap(drawable);
                     drawable.mutate();
                     DrawableCompat.setTint(wrapped, color);
                     image.setImageDrawable(drawable);

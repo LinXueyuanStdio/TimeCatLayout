@@ -1,18 +1,16 @@
 apply from: "${project.rootDir}/gradle/library_header.gradle"
 
-
 apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
-apply plugin: 'kotlin-kapt'
+apply plugin: 'kotlin-parcelize'
 
 android {
     resourcePrefix "view_" //给 Module 内的资源名增加前缀, 避免资源名冲突
-    buildFeatures {
-        viewBinding true
+    lintOptions {
+        checkDependencies false
     }
-
     kotlinOptions {
-        jvmTarget = JavaVersion.VERSION_1_8.toString()
+        jvmTarget = "11"
+//        useIR = true
     }
 }
 

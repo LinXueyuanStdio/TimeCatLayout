@@ -44,8 +44,14 @@ class SpinnerItem @JvmOverloads constructor(
 
     fun <T> onItemSelected(items: List<T>, onSelect: (data: T, index: Int) -> Unit) {
         materialSpinner.setItems(items)
-        materialSpinner.setOnItemSelectedListener(object : BlockMaterialSpinner.OnItemSelectedListener<T> {
-            override fun onItemSelected(view: BlockMaterialSpinner?, position: Int, id: Long, item: T) {
+        materialSpinner.setOnItemSelectedListener(object :
+            BlockMaterialSpinner.OnItemSelectedListener<T> {
+            override fun onItemSelected(
+                view: BlockMaterialSpinner?,
+                position: Int,
+                id: Long,
+                item: T
+            ) {
                 onSelect(item, position)
             }
         })

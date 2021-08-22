@@ -27,13 +27,9 @@ import android.view.ViewConfiguration;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import androidx.core.content.ContextCompat;
-import androidx.core.view.MotionEventCompat;
-import androidx.core.view.NestedScrollingChild;
-
 import com.timecat.component.commonsdk.utils.string.RegexUtil;
-import com.timecat.identity.readonly.Constants;
 import com.timecat.component.setting.DEF;
+import com.timecat.identity.readonly.Constants;
 import com.timecat.layout.ui.R;
 import com.timecat.layout.ui.utils.ViewUtil;
 
@@ -41,6 +37,11 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+
+import androidx.core.content.ContextCompat;
+import androidx.core.view.MotionEventCompat;
+import androidx.core.view.NestedScrollingChild;
+
 public class TimeCatLayout extends ViewGroup implements TimeCatHeader.ActionListener, NestedScrollingChild {
 
     public static final String ENTER = "_Enter_";
@@ -147,7 +148,7 @@ public class TimeCatLayout extends ViewGroup implements TimeCatHeader.ActionList
 
 
         dragPaint = new Paint();
-//        dragPaint.setAlpha(100);
+        //        dragPaint.setAlpha(100);
         dragPaint.setAntiAlias(true);
 
         addView(mHeader, 0);
@@ -163,11 +164,11 @@ public class TimeCatLayout extends ViewGroup implements TimeCatHeader.ActionList
                 int x = (int) event.getX();
                 int y = (int) event.getY();
                 int eventType = event.getAction();
-//                View view= (View) event.getLocalState();
-//                if (eventType==DragEvent.ACTION_DRAG_ENDED){
-//                    return true;
-//                }
-//                String txt=event.getClipDescription().getLabel().toString();
+                //                View view= (View) event.getLocalState();
+                //                if (eventType==DragEvent.ACTION_DRAG_ENDED){
+                //                    return true;
+                //                }
+                //                String txt=event.getClipDescription().getLabel().toString();
                 try {
                     if (dragItem == null || !(dragItem.getText().equals(event.getClipDescription().getLabel()))) {
                         return false;
@@ -295,7 +296,7 @@ public class TimeCatLayout extends ViewGroup implements TimeCatHeader.ActionList
 
     public void addTextItem(String text) {
         mNeedReDetectInMeasure = true;
-//        if (TextUtils.isEmpty(text) || text.equals(" ")) {
+        //        if (TextUtils.isEmpty(text) || text.equals(" ")) {
         if (TextUtils.isEmpty(text)) {
             return;
         }
@@ -433,15 +434,15 @@ public class TimeCatLayout extends ViewGroup implements TimeCatHeader.ActionList
             int selectedLineHeight = (lastSelectedLine.maxIndex - firstSelectedLine.maxIndex + 1) * (firstSelectedLine.getHeight() + mLineSpace);
             mHeader.measure(MeasureSpec.makeMeasureSpec(widthSize, MeasureSpec.EXACTLY), MeasureSpec.makeMeasureSpec(selectedLineHeight, MeasureSpec.UNSPECIFIED));
         }
-//        int size = heightSize + getPaddingTop() + getPaddingBottom() + (mLines.size()) * mLineSpace + mActionBarTopHeight + mActionBarBottomHeight;
+        //        int size = heightSize + getPaddingTop() + getPaddingBottom() + (mLines.size()) * mLineSpace + mActionBarTopHeight + mActionBarBottomHeight;
         int size = (mLines.size() > 0 ? (mLines.size() * mLines.get(0).getHeight()) : 0) + getPaddingTop() + getPaddingBottom() + (mLines.size()) * mLineSpace + mActionBarTopHeight + mActionBarBottomHeight;
         super.onMeasure(widthMeasureSpec, MeasureSpec.makeMeasureSpec(size, MeasureSpec.EXACTLY));
     }
 
-//    @Override
-//    public boolean onInterceptTouchEvent(MotionEvent ev) {
-//        return true;
-//    }
+    //    @Override
+    //    public boolean onInterceptTouchEvent(MotionEvent ev) {
+    //        return true;
+    //    }
 
     @Override
     protected void onLayout(boolean changed, int l, int t, int r, int b) {
@@ -605,7 +606,7 @@ public class TimeCatLayout extends ViewGroup implements TimeCatHeader.ActionList
                     break;
                 case MotionEvent.ACTION_CANCEL:
                 case MotionEvent.ACTION_UP:
-//                    dragItem = null;
+                    //                    dragItem = null;
                     if (mTargetItem == null && dragItem != null) {
                         mNeedReDetectInMeasure = true;
                         removeView(dragItem.view);
@@ -732,18 +733,18 @@ public class TimeCatLayout extends ViewGroup implements TimeCatHeader.ActionList
             // TODO: 2016/10/27 调整效果
             return null;
         }
-//        for (int i=0;i<length;i++) {
-//            if (y-mLines.get(i).getHeight()/2<0 ){
-//                lingNum=i;
-//                break;
-//            }
-//            if (height <= y-mLines.get(i).getHeight()/2+mLineSpace/2 && height+mLines.get(i).getHeight()+mLineSpace>= y-mLines.get(i).getHeight()/2+mLineSpace/2 ){
-//                lingNum=i;
-//                break;
-//            }
-//            height+=mLines.get(i).getHeight()+mLineSpace;
-//            lingNum=i;
-//        }
+        //        for (int i=0;i<length;i++) {
+        //            if (y-mLines.get(i).getHeight()/2<0 ){
+        //                lingNum=i;
+        //                break;
+        //            }
+        //            if (height <= y-mLines.get(i).getHeight()/2+mLineSpace/2 && height+mLines.get(i).getHeight()+mLineSpace>= y-mLines.get(i).getHeight()/2+mLineSpace/2 ){
+        //                lingNum=i;
+        //                break;
+        //            }
+        //            height+=mLines.get(i).getHeight()+mLineSpace;
+        //            lingNum=i;
+        //        }
         if (mLines.get(0).hasSelected() && y <= mActionBarTopHeight) {
             lineNum = 0;
         } else if (!mLines.get(0).hasSelected() && y <= mLines.get(0).getHeight() / 2 + mActionBarTopHeight) {
@@ -860,7 +861,7 @@ public class TimeCatLayout extends ViewGroup implements TimeCatHeader.ActionList
         for (Line line : mLines) {
             List<Item> items = line.getItems();
             for (Item item : items) {
-//                item.setSelected(!item.isSelected());
+                //                item.setSelected(!item.isSelected());
                 item.triggerSelected();
             }
         }
@@ -921,8 +922,8 @@ public class TimeCatLayout extends ViewGroup implements TimeCatHeader.ActionList
 
         @Override
         public boolean equals(Object o) {
-            if (this == o) return true;
-            if (!(o instanceof ItemState)) return false;
+            if (this == o) { return true; }
+            if (!(o instanceof ItemState)) { return false; }
 
             ItemState itemState = (ItemState) o;
 
@@ -1049,7 +1050,7 @@ public class TimeCatLayout extends ViewGroup implements TimeCatHeader.ActionList
                 mNeedReDetectInMeasure = true;
                 ViewGroup viewgroup = (ViewGroup) view.getParent();
                 viewgroup.removeView(view);
-//                int newPadding=(mTextPadding*2- mItemSpace*(size-1))/(size*2) ;
+                //                int newPadding=(mTextPadding*2- mItemSpace*(size-1))/(size*2) ;
                 //还是不考虑界面会变动的问题了，先保证好看
                 int newPadding = (mTextPadding);
                 for (int i = 0; i < size; i++) {

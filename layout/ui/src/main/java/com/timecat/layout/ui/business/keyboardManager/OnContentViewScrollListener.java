@@ -8,5 +8,5 @@ package com.timecat.layout.ui.business.keyboardManager;
  * @usage null
  */
 public interface OnContentViewScrollListener {
-  void needScroll(int distance);
+    void needScroll(int distance);
 }

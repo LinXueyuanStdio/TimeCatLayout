@@ -3,10 +3,10 @@ package com.timecat.layout.ui.business.FlipView;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 
-import androidx.annotation.DrawableRes;
-
 import com.timecat.extend.arms.BaseApplication;
 import com.timecat.layout.ui.utils.ImageUtil;
+
+import androidx.annotation.DrawableRes;
 
 /**
  * @author dlink
@@ -15,7 +15,7 @@ import com.timecat.layout.ui.utils.ImageUtil;
  * @description null
  * @usage null
  */
-public class FlipMenuItem  {
+public class FlipMenuItem {
 
     public String title;
     public int titleColor = Color.BLACK;

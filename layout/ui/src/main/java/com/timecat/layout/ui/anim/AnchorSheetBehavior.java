@@ -29,6 +29,13 @@ import android.view.View;
 import android.view.ViewConfiguration;
 import android.view.ViewGroup;
 import android.view.ViewParent;
+
+import com.timecat.layout.ui.R;
+
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.ref.WeakReference;
+
 import androidx.annotation.IntDef;
 import androidx.annotation.NonNull;
 import androidx.annotation.VisibleForTesting;
@@ -39,10 +46,6 @@ import androidx.core.view.ViewCompat.NestedScrollType;
 import androidx.core.view.ViewCompat.ScrollAxis;
 import androidx.customview.view.AbsSavedState;
 import androidx.customview.widget.ViewDragHelper;
-import com.timecat.layout.ui.R;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.ref.WeakReference;
 
 /**
  * An interaction behavior plugin for a child view of {@link CoordinatorLayout} to make it work as
@@ -367,11 +370,11 @@ public class AnchorSheetBehavior<V extends View> extends CoordinatorLayout.Behav
 
     @Override
     public boolean onStartNestedScroll(@NonNull CoordinatorLayout coordinatorLayout,
-                                       @NonNull V child,
-                                       @NonNull View directTargetChild,
-                                       @NonNull View target,
-                                       @ScrollAxis int nestedScrollAxes,
-                                       @NestedScrollType int type) {
+            @NonNull V child,
+            @NonNull View directTargetChild,
+            @NonNull View target,
+            @ScrollAxis int nestedScrollAxes,
+            @NestedScrollType int type) {
         mLastNestedScrollDy = 0;
         mNestedScrolled = false;
         return (nestedScrollAxes & ViewCompat.SCROLL_AXIS_VERTICAL) != 0;
@@ -379,12 +382,12 @@ public class AnchorSheetBehavior<V extends View> extends CoordinatorLayout.Behav
 
     @Override
     public void onNestedPreScroll(@NonNull CoordinatorLayout coordinatorLayout,
-                                  @NonNull V child,
-                                  @NonNull View target,
-                                  int dx,
-                                  int dy,
-                                  @NonNull int[] consumed,
-                                  @NestedScrollType int type) {
+            @NonNull V child,
+            @NonNull View target,
+            int dx,
+            int dy,
+            @NonNull int[] consumed,
+            @NestedScrollType int type) {
         View scrollingChild = mNestedScrollingChildRef.get();
         if (target != scrollingChild) {
             return;
@@ -421,9 +424,9 @@ public class AnchorSheetBehavior<V extends View> extends CoordinatorLayout.Behav
 
     @Override
     public void onStopNestedScroll(@NonNull CoordinatorLayout coordinatorLayout,
-                                   @NonNull V child,
-                                   @NonNull View target,
-                                   @NestedScrollType int type) {
+            @NonNull V child,
+            @NonNull View target,
+            @NestedScrollType int type) {
         if (child.getTop() == mMinOffset) {
             setStateInternal(STATE_EXPANDED);
             return;
@@ -479,10 +482,10 @@ public class AnchorSheetBehavior<V extends View> extends CoordinatorLayout.Behav
 
     @Override
     public boolean onNestedPreFling(@NonNull CoordinatorLayout coordinatorLayout,
-                                    @NonNull V child,
-                                    @NonNull View target,
-                                    float velocityX,
-                                    float velocityY) {
+            @NonNull V child,
+            @NonNull View target,
+            float velocityX,
+            float velocityY) {
         return target == mNestedScrollingChildRef.get() &&
                 (mState != STATE_EXPANDED ||
                         super.onNestedPreFling(coordinatorLayout, child, target,

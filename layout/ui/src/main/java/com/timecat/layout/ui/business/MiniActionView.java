@@ -9,12 +9,12 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
-import androidx.annotation.ColorInt;
-import androidx.annotation.NonNull;
-
 import com.github.florent37.viewtooltip.ViewTooltip;
 import com.github.florent37.viewtooltip.ViewTooltip.Position;
 import com.timecat.layout.ui.R;
+
+import androidx.annotation.ColorInt;
+import androidx.annotation.NonNull;
 
 
 /**
@@ -81,7 +81,7 @@ public class MiniActionView extends LinearLayout {
         iv_labels = findViewById(R.id.iv_labels);
         iv_checklist = findViewById(R.id.iv_checklist);
         iv_more = findViewById(R.id.iv_more);
-        iv_speech= findViewById(R.id.iv_speech);
+        iv_speech = findViewById(R.id.iv_speech);
     }
 
     public void tintAllWithColor(@ColorInt int color) {
@@ -178,14 +178,14 @@ public class MiniActionView extends LinearLayout {
 
     private boolean showToolTip(View v, String s) {
         ViewTooltip.on(v)
-                .autoHide(true, 1000)
-                .clickToHide(true)
-                .position(Position.BOTTOM)
-                .text(s)
-                .corner(10)
-                .arrowWidth(15)
-                .arrowHeight(15)
-                .show();
+                   .autoHide(true, 1000)
+                   .clickToHide(true)
+                   .position(Position.BOTTOM)
+                   .text(s)
+                   .corner(10)
+                   .arrowWidth(15)
+                   .arrowHeight(15)
+                   .show();
         return true;
     }
 
@@ -212,6 +212,7 @@ public class MiniActionView extends LinearLayout {
         void onToggleCheckList(View iv_checklist);
 
         void onMore(View iv_more);
+
         void onAppendSpeech(View iv_speech);
     }
 }

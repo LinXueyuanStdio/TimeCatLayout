@@ -2,7 +2,6 @@ package com.timecat.layout.ui.business.setting
 
 import android.content.Context
 import android.text.Editable
-import android.text.InputType
 import android.text.TextWatcher
 import android.util.AttributeSet
 import com.google.android.material.textfield.TextInputEditText
@@ -45,7 +44,7 @@ open class InputItem @JvmOverloads constructor(
     }
 
     var hint: String
-        get() = inputLayout.hint?.toString() ?:""
+        get() = inputLayout.hint?.toString() ?: ""
         set(value) {
             inputLayout.hint = value
         }

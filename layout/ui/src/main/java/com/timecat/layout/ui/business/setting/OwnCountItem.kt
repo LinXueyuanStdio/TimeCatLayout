@@ -4,7 +4,6 @@ import android.content.Context
 import android.util.AttributeSet
 import android.widget.ImageView
 import android.widget.LinearLayout
-import com.timecat.layout.ui.business.setting.InputItem
 import com.timecat.layout.ui.layout.*
 import com.timecat.layout.ui.utils.IconLoader
 
@@ -87,6 +86,7 @@ class OwnCountItem @JvmOverloads constructor(
             onClick(imageView)
         }
     }
+
     fun onCloseIconClick(onClick: (item: ImageView) -> Unit) {
         closeView.setShakelessClickListener {
             onClick(closeView)

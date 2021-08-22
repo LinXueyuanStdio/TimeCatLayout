@@ -2,7 +2,6 @@ package com.timecat.layout.ui.business.setting
 
 import android.content.Context
 import android.util.AttributeSet
-import android.view.Gravity
 import androidx.appcompat.widget.AppCompatTextView
 import com.timecat.component.identity.Attr
 import com.timecat.layout.ui.utils.ViewUtil

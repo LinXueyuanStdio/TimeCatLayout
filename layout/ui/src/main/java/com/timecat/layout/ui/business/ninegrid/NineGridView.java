@@ -108,7 +108,7 @@ public class NineGridView extends CardView {
             setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
         }
 
-        minWidth = (int) ((float)bigPictureMaxHeight / ScreenUtils.getScreenHeight() * ScreenUtils.getScreenWidth());
+        minWidth = (int) ((float) bigPictureMaxHeight / ScreenUtils.getScreenHeight() * ScreenUtils.getScreenWidth());
         setMinimumWidth(minWidth);
     }
 
@@ -166,8 +166,6 @@ public class NineGridView extends CardView {
                     height = bigPictureMaxHeight;
                 }
             }
-
-
 
 
             child.measure(width, height);
@@ -602,7 +600,7 @@ public class NineGridView extends CardView {
                 }
             });
             addView(container);
-            RequestOptions op =  new RequestOptions()
+            RequestOptions op = new RequestOptions()
                     .error(R.mipmap.bga_pp_ic_holder_light)
                     .placeholder(R.mipmap.bga_pp_ic_holder_light)
                     .override(mBaseLength)
@@ -661,7 +659,7 @@ public class NineGridView extends CardView {
             //            addImageView.getImageView().setColorFilter();
             int color = Attr.getPrimaryTextColor(getContext());
             addImageView.getImageView().setImageTintList(ColorStateList.valueOf(color));
-//            SkinEngine.setTint(addImageView.getImageView(), R.attr.textColorNormal);
+            //            SkinEngine.setTint(addImageView.getImageView(), R.attr.textColorNormal);
             addImageView.getImageView().setScaleType(ImageView.ScaleType.FIT_XY);
             addImageView.setIsDeleteMode(true);
             addImageView.setOnClickListener(new View.OnClickListener() {
@@ -706,7 +704,9 @@ public class NineGridView extends CardView {
 
     public interface Callback {
         void onImageItemClicked(int position, List<String> urls);
+
         void onAddItemClicked(int position);
+
         void onImageItemDelete(int position, String url);
     }
 
