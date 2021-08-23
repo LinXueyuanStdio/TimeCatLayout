@@ -3,7 +3,7 @@
 
     <application>
         <meta-data
-            android:name="com.timecat.layout.com.timecat.layout.ui.core.GlobalConfiguration"
+            android:name="com.timecat.layout.ui.core.GlobalConfiguration"
             android:value="ConfigModule" />
     </application>
 </manifest>

@@ -37,8 +37,6 @@ dependencies {
 
     api 'com.haibin:calendarview:3.2.7'
 
-    api 'com.github.chenBingX:SuperTextView:v3.2.5'
-    api 'com.github.zagum:Android-ExpandIcon:1.2.1'
     api 'com.github.githubwing:ByeBurger:1.2.3'
 
     api rootProject.ext.dependencies["viewtooltip"]
