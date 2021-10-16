@@ -9,6 +9,7 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="layout/ui/src/main/res/layout/bms_layout_list_item.xml" value="0.1621376811594203" />
+        <entry key="layout/ui/src/main/res/layout/item_app_intent.xml" value="0.1" />
         <entry key="layout/ui/src/main/res/layout/layout_breadcrumb_item.xml" value="0.1" />
         <entry key="layout/ui/src/main/res/layout/view_setting_dropdown_input_item_layout.xml" value="0.1621376811594203" />
         <entry key="layout/ui/src/main/res/layout/view_setting_image_item_layout.xml" value="0.1621376811594203" />

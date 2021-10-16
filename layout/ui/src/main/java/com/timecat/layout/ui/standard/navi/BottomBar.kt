@@ -57,15 +57,13 @@ open class BottomBar @JvmOverloads constructor(
     fun addItem(tab: AbstractBottomBarTab): BottomBar {
         mTabLayout!!.addView(tab, mTabLayout!!.childCount - fixedLastItemCount)
         bindAnimation(tab)
-        mTabs.add(tab)
-        config(tab)
+        attachToList(tab)
         return this
     }
 
     fun addHeadItem(tab: AbstractBottomBarTab): BottomBar {
         addView(tab)
-        mTabs.add(tab)
-        config(tab)
+        attachToList(tab)
         return this
     }
 
@@ -89,7 +87,7 @@ open class BottomBar @JvmOverloads constructor(
      *
      * @param tab tab
      */
-    private fun config(tab: AbstractBottomBarTab) {
+    fun config(tab: AbstractBottomBarTab) {
         tab.setOnClickListener {
             if (mListener == null) return@setOnClickListener
             val pos = tab.tabPosition
@@ -113,17 +111,20 @@ open class BottomBar @JvmOverloads constructor(
         tab.layoutParams = mTabParams
     }
 
+    fun attachToList(tab: AbstractBottomBarTab): BottomBar {
+        mTabs.add(tab)
+        config(tab)
+        return this
+    }
+
     /**
-     * tab 自己负责点击事件
-     *
+     * tab 自己负责点击事件，点击后不选中，一般是启动另一个页面的时候使用
+     * 如果想作为其他tab，即点击后选中，则请继续调用 attachToList
      * @param tab 加
      * @return 自己
      */
     fun addOrReplaceLastItem(tab: AbstractBottomBarTab): BottomBar {
-        val h = resources.getDimension(R.dimen.t_miniPlayBarHeight).toInt()
-        val tabParams = LayoutParams(h, h)
-        tabParams.gravity = Gravity.END or Gravity.CENTER_VERTICAL
-        tab.layoutParams = tabParams
+        tab.layoutParams = mTabParams
         val count = childCount
         if (count > 0 && getChildAt(count - 1) is AbstractBottomBarTab) {
             removeViewAt(count - 1)
