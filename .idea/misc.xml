@@ -8,6 +8,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="../../../.gradle/caches/transforms-3/40a44720df67b92dfb978f76ab926c49/transformed/jetified-resources-1.0.0/res/drawable/ic_filter.xml" value="0.3148148148148148" />
         <entry key="layout/ui/src/main/res/layout/bms_layout_list_item.xml" value="0.1621376811594203" />
         <entry key="layout/ui/src/main/res/layout/item_app_intent.xml" value="0.1" />
         <entry key="layout/ui/src/main/res/layout/layout_breadcrumb_item.xml" value="0.1" />

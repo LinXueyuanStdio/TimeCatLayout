@@ -21,19 +21,18 @@ open class BottomBar @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     defStyleAttr: Int = 0
-) :
-    LinearLayout(context, attrs, defStyleAttr) {
-    private val mInterpolator: Interpolator = AccelerateDecelerateInterpolator()
+) : LinearLayout(context, attrs, defStyleAttr) {
+    val mInterpolator: Interpolator = AccelerateDecelerateInterpolator()
     var isVisible = true
         private set
-    private val mTabs: MutableList<AbstractBottomBarTab> = ArrayList()
-    private var horizontalScrollView: HorizontalScrollView? = null
-    private var mTabLayout: LinearLayout? = null
-    private var mTabParams: LayoutParams? = null
+    val mTabs: MutableList<AbstractBottomBarTab> = ArrayList()
+    var horizontalScrollView: HorizontalScrollView? = null
+    var mTabLayout: LinearLayout? = null
+    var mTabParams: LayoutParams? = null
     var currentItemPosition = 0
         private set
-    private var mListener: OnTabSelectedListener? = null
-    private fun init(context: Context, attrs: AttributeSet?) {
+    var mListener: OnTabSelectedListener? = null
+    fun init(context: Context, attrs: AttributeSet?) {
         orientation = HORIZONTAL
         horizontalScrollView = HorizontalScrollView(context)
         mTabLayout = LinearLayout(context)
